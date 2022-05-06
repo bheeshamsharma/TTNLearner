@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/app_navigation"
+    app:startDestination="@id/navigation_learning">
+
+
+    <fragment
+        android:id="@+id/navigation_learning"
+        android:name="com.psgpw.geek_ttn.fragments.LearningFragment"
+        android:label="@string/title_learning"
+        tools:layout="@layout/fragment_learning">
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_courses"
+        android:name="com.psgpw.geek_ttn.fragments.CoursesFragment"
+        android:label="@string/title_courses"
+        tools:layout="@layout/fragment_courses">
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_assignments"
+        android:name="com.psgpw.geek_ttn.fragments.AssignmentsFragment"
+        android:label="@string/title_assignments"
+        tools:layout="@layout/fragment_assignments">
+
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/navigation_chat"
+        android:name="com.psgpw.geek_ttn.fragments.ChatFragment"
+        android:label="@string/title_chat"
+        tools:layout="@layout/fragment_chat">
+
+    </fragment>
+
+</navigation>

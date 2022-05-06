@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Geek_TTN</string>
+    <string name="title_dashboard">Home</string>
+    <string name="title_learning">Learning</string>
+    <string name="title_courses">Courses</string>
+    <string name="title_assignments">Assignments</string>
+    <string name="title_chat">Chat</string>
+    <string name="google_api_key">AIzaSyAMVh5cqYrd7-EtTcyrY_2Fn3S6Mvu5fe0</string>
+</resources>

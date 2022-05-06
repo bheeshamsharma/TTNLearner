@@ -1,0 +1,62 @@
+package com.psgpw.HireMe.data.models
+
+data class UserDetail(
+    val id: String,
+    val firstname: String? = null,
+    val middlename: String? = null,
+    val lastname: String,
+    val phonenumber: String? = null,
+    val email: String,
+    val dob: String,
+    val gender: String,
+    val address: String,
+    val country: String,
+    val state: String,
+    val city: String,
+    val website: String,
+    val description: String,
+    val zipcode: String,
+    val status: String? = null,
+    val profile_image: String? = null,
+    val profile_video: String? = null,
+    val business_size: String? = null,
+    val current_vacancy: String? = null,
+    val document: String? = null,
+    val upload_cover_letter: String? = null,
+    val higest_qualification: String? = null,
+    val skill_expertise: String? = null,
+    val industry: String? = null,
+    val apply_as: String? = null,
+    val experience_month: String? = null,
+    val experience_year: String? = null,
+    val current_company: String? = null,
+    val current_designation: String? = null,
+    val current_salary: String? = null,
+    val currency_id: String? = null,
+    val currrent_job_location: String? = null,
+    val preferred_location: String? = null,
+    val expected_salary: String? = null,
+    val service_name: String? = null,
+    val service: String? = null,
+    val interest: String? = null,
+    val linkedin: String? = null,
+    val instagram: String? = null,
+    val twitter: String? = null,
+    val email_verified_at: String? = null,
+    val display_order: String? = null,
+    val verification_code: String? = null,
+    val password: String? = null,
+    val remember_token: String? = null,
+    val is_active: String? = null,
+    val subscribe: String? = null,
+    val category_id: String? = null,
+    val job_type: String? = null,
+    val user_type: String? = null,
+    val serviceList: List<Service>
+) {}
+
+class Service() {
+    val id: String? = null
+    val name: String? = null
+
+}
