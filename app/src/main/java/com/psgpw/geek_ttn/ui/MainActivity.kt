@@ -1,4 +1,4 @@
-package com.psgpw.geek_ttn
+package com.psgpw.geek_ttn.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -6,6 +6,7 @@ import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.ui.NavigationUI
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.psgpw.geek_ttn.R
 
 class MainActivity : AppCompatActivity() {
 
