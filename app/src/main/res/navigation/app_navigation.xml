@@ -20,6 +20,9 @@
         android:label="@string/title_courses"
         tools:layout="@layout/fragment_courses">
 
+        <action
+            android:id="@+id/action_navigation_courses_to_newCourseFragment"
+            app:destination="@id/newCourseFragment" />
     </fragment>
 
     <fragment
@@ -38,5 +41,9 @@
         tools:layout="@layout/fragment_chat">
 
     </fragment>
+    <fragment
+        android:id="@+id/newCourseFragment"
+        android:name="com.example.greekcompactapp.fragment.NewCourseFragment"
+        android:label="NewCourseFragment" />
 
 </navigation>

@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
+import com.psgpw.geek_ttn.R
 import com.psgpw.geek_ttn.databinding.FragmentCoursesBinding
 
 class CoursesFragment : Fragment() {
@@ -24,6 +25,9 @@ class CoursesFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.button4.setOnClickListener {
+            findNavController().navigate(R.id.action_navigation_courses_to_newCourseFragment)
+        }
         //setUpToolBar()
     }
 

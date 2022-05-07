@@ -1,12 +1,14 @@
 package com.psgpw.geek_ttn.ui
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.ActionBar
+import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.ui.NavigationUI
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.psgpw.geek_ttn.R
+import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -22,6 +24,13 @@ class MainActivity : AppCompatActivity() {
         navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_home)
         //NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(navView, navController)
+        val actionBar: ActionBar? = supportActionBar
+        if (actionBar != null) {
+            val cal: Calendar = Calendar.getInstance()
+            val dynamicTitle: String = cal.getTime().toString()
+            //Setting a dynamic title at runtime. Here, it displays the current time.
+            actionBar.setTitle(dynamicTitle)
+        }
 
     }
 
