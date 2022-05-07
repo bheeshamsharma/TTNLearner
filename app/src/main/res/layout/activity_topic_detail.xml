@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingHorizontal="@dimen/_10sdp"
+    tools:context=".ui.TopicDetailActivity">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_10sdp"
+        app:cardElevation="@dimen/_5sdp"
+        app:cardCornerRadius="@dimen/_3sdp"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="start"
+            android:padding="@dimen/_3sdp"
+            android:textSize="@dimen/_12ssp"
+            android:text="Activity Lifecycle \n
+The activity lifecycle is the set of states an activity can be in during its entire lifetime, from the time it is initially created to when it is destroyed."/>
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/tv_ref_link"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ref. Link:"
+        android:textSize="@dimen/_12ssp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@+id/cardView"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="@dimen/_20sdp"/>
+    <TextView
+        android:id="@+id/tv_ref_link_1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:autoLink="web"
+        android:linksClickable="true"
+        android:text="https://developer.android.com/guide/components/activities/activity-lifecycle"
+        app:layout_constraintTop_toBottomOf="@+id/tv_ref_link"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="@dimen/_5sdp"/>
+    <TextView
+        android:id="@+id/tv_ref_video"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ref. Video:"
+        android:textSize="@dimen/_12ssp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@+id/tv_ref_link_1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="@dimen/_20sdp"/>
+    <ImageView
+        android:id="@+id/iv_video1"
+        android:layout_width="@dimen/_60sdp"
+        android:layout_height="@dimen/_60sdp"
+        android:src="@drawable/ic_video"
+        app:layout_constraintTop_toBottomOf="@+id/tv_ref_video"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="@dimen/_5sdp"
+        />
+    <Button
+        android:id="@+id/btn_watch_video"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Watch Video"
+        android:textAllCaps="false"
+        android:paddingHorizontal="@dimen/_15sdp"
+        android:paddingVertical="@dimen/_5sdp"
+        app:layout_constraintTop_toBottomOf="@+id/iv_video1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="@dimen/_5sdp"
+        />
+
+    <TextView
+        android:id="@+id/tv_done_topic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/_12ssp"
+        android:textStyle="bold"
+        android:text="Done with your topic, then what are you waiting for?"
+        app:layout_constraintTop_toBottomOf="@+id/btn_watch_video"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="@dimen/_20sdp"/>
+
+    <Button
+        android:id="@+id/btn_submit_assignment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Submit your assignment"
+        android:textAllCaps="false"
+        android:paddingHorizontal="@dimen/_15sdp"
+        android:paddingVertical="@dimen/_5sdp"
+        app:layout_constraintTop_toBottomOf="@+id/tv_done_topic"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="@dimen/_5sdp"
+        />
+
+
+    <TextView
+        android:id="@+id/tv_talk_expert"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/_12ssp"
+        android:textStyle="bold"
+        android:text="Have any query, Talk to our Expert."
+        app:layout_constraintTop_toBottomOf="@+id/btn_submit_assignment"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="@dimen/_20sdp"/>
+
+    <Button
+        android:id="@+id/btn_chat_expert"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Chat with Expert"
+        android:textAllCaps="false"
+        android:paddingHorizontal="@dimen/_15sdp"
+        android:paddingVertical="@dimen/_5sdp"
+        app:layout_constraintTop_toBottomOf="@+id/tv_talk_expert"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="@dimen/_5sdp"
+        />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

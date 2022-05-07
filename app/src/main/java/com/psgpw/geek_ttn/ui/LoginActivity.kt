@@ -45,6 +45,7 @@ class LoginActivity : AppCompatActivity() {
         binding.tvGoogleLogin.setOnClickListener {
             signIn()
         }
+        setContentView(binding.root)
     }
 
     private fun signIn() {

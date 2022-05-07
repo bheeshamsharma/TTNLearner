@@ -3,6 +3,7 @@
     package="com.psgpw.geek_ttn">
 
     <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -10,6 +11,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Geek_TTN">
+        <activity
+            android:name=".ui.PlayerActivity"
+            android:exported="true">
+
+        </activity>
+        <activity
+            android:name=".ui.TopicDetailActivity"
+            android:exported="true"></activity>
         <activity
             android:name=".ui.LoginActivity"
             android:exported="false" />

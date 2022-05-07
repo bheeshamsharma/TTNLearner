@@ -5,10 +5,14 @@
       <map>
         <entry key="..\:/Geek_TTN/app/src/main/res/layout/activity_login.xml" value="0.13541666666666666" />
         <entry key="..\:/Geek_TTN/app/src/main/res/layout/activity_main.xml" value="0.23802083333333332" />
+        <entry key="..\:/Geek_TTN/app/src/main/res/layout/activity_player.xml" value="0.13489583333333333" />
         <entry key="..\:/Geek_TTN/app/src/main/res/layout/activity_splash.xml" value="0.13541666666666666" />
+        <entry key="..\:/Geek_TTN/app/src/main/res/layout/activity_topic_detail.xml" value="0.13489583333333333" />
         <entry key="..\:/Geek_TTN/app/src/main/res/layout/fragment_chat.xml" value="0.12447916666666667" />
         <entry key="..\:/Geek_TTN/app/src/main/res/layout/fragment_dashboard.xml" value="0.23802083333333332" />
         <entry key="..\:/Geek_TTN/app/src/main/res/layout/fragment_learning.xml" value="0.12447916666666667" />
+        <entry key="..\:/Geek_TTN/app/src/main/res/layout/fragment_new_course.xml" value="0.13489583333333333" />
+        <entry key="..\:/Geek_TTN/app/src/main/res/layout/fragment_pending_assignment.xml" value="0.13489583333333333" />
         <entry key="..\:/Geek_TTN/app/src/main/res/layout/fragment_setting.xml" value="0.12447916666666667" />
         <entry key="..\:/Geek_TTN/app/src/main/res/layout/fragment_swipe.xml" value="0.23802083333333332" />
         <entry key="..\:/Geek_TTN/app/src/main/res/layout/item_chat_list.xml" value="0.1703125" />

@@ -8,9 +8,9 @@
 
     <fragment
         android:id="@+id/navigation_learning"
-        android:name="com.psgpw.geek_ttn.fragments.LearningFragment"
+        android:name="com.psgpw.geek_ttn.fragments.ChatFragment"
         android:label="@string/title_learning"
-        tools:layout="@layout/fragment_learning">
+        tools:layout="@layout/fragment_chat">
 
     </fragment>
 
