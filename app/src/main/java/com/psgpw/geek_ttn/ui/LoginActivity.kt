@@ -1,13 +1,16 @@
 package com.psgpw.geek_ttn.ui
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.viewModels
-import androidx.fragment.app.viewModels
+import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import com.google.android.gms.auth.api.signin.GoogleSignIn
@@ -25,8 +28,8 @@ import com.psgpw.geek_ttn.viewmodels.LearningViewModel
 import com.psgpw.pickapp.data.DataStoreManager
 import com.psgpw.pickapp.data.models.SignInRequest
 import com.psgpw.pickapp.data.models.User
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
+
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
@@ -39,7 +42,6 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
-
         binding.tvGoogleLogin.setOnClickListener {
             signIn()
         }
@@ -62,10 +64,13 @@ class LoginActivity : AppCompatActivity() {
             // a listener.
             val task: Task<GoogleSignInAccount> = GoogleSignIn.getSignedInAccountFromIntent(data)
             handleSignInResult(task)
+
+//            suspend {
+//            }
         }
     }
 
-    private fun handleSignInResult(completedTask: Task<GoogleSignInAccount>) {
+    private  fun handleSignInResult(completedTask: Task<GoogleSignInAccount>) {
         try {
             account = completedTask.getResult(ApiException::class.java)
             Log.d("Learning Page : Name", account!!.displayName.toString())
@@ -74,7 +79,26 @@ class LoginActivity : AppCompatActivity() {
                 name = account!!.displayName.toString(),
                 email = account!!.email.toString()
             )
-            apiLoginSignUpObserver()
+
+            val builder: AlertDialog.Builder = AlertDialog.Builder(this)
+            val viewGroup = findViewById<ViewGroup>(android.R.id.content)
+            val dialogView: View = LayoutInflater.from(applicationContext).inflate(R.layout.dialog_choose_role, viewGroup, false)
+            builder.setView(dialogView)
+            var name1 = account!!.displayName.toString()
+
+            dialogView.findViewById<TextView>(R.id.welcomename).text=("Welcome $name1 , to the learning world")
+            val alertDialog: AlertDialog = builder.create()
+            alertDialog.show()
+            dialogView.findViewById<TextView>(R.id.button3).setOnClickListener {
+                startActivity(Intent(this,MainActivity::class.java))
+                alertDialog.hide()
+            }
+
+//            var user:User= User("454",email = account!!.email.toString(),name = account!!.displayName.toString(),null)
+//            DataStoreManager(context = this@LoginActivity).saveUserToPreferencesStore(user)
+//            openRoleSelectionActivity()
+
+            //apiLoginSignUpObserver()
         } catch (e: ApiException) {
             Log.w("LoginActivity", "signInResult:failed code=" + e.statusCode)
             Toast.makeText(
