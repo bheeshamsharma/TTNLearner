@@ -3,9 +3,12 @@ package com.psgpw.geek_ttn.ui
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.lifecycle.lifecycleScope
 import com.psgpw.geek_ttn.R
+import com.psgpw.pickapp.data.DataStoreManager
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 class SplashActivity : AppCompatActivity() {
@@ -15,8 +18,25 @@ class SplashActivity : AppCompatActivity() {
 
         GlobalScope.launch {
             delay(2000L)
-            val intent:Intent=Intent(this@SplashActivity, MainActivity::class.java)
-            startActivity(intent)
+            lifecycleScope.launch {
+                DataStoreManager(this@SplashActivity).isUserLogin().collect { loginStatus ->
+                    if (loginStatus) {
+                        startActivity(
+                            Intent(
+                                this@SplashActivity,
+                                MainActivity::class.java
+                            )
+                        )
+                    } else {
+                        startActivity(
+                            Intent(
+                                this@SplashActivity,
+                                LoginActivity::class.java
+                            )
+                        )
+                    }
+                }
+            }
             finish()
         }
     }

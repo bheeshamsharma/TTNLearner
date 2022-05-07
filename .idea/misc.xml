@@ -3,7 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Geek_TTN/app/src/main/res/layout/activity_login.xml" value="0.13541666666666666" />
         <entry key="..\:/Geek_TTN/app/src/main/res/layout/activity_main.xml" value="0.23802083333333332" />
+        <entry key="..\:/Geek_TTN/app/src/main/res/layout/activity_splash.xml" value="0.13541666666666666" />
         <entry key="..\:/Geek_TTN/app/src/main/res/layout/fragment_chat.xml" value="0.12447916666666667" />
         <entry key="..\:/Geek_TTN/app/src/main/res/layout/fragment_dashboard.xml" value="0.23802083333333332" />
         <entry key="..\:/Geek_TTN/app/src/main/res/layout/fragment_learning.xml" value="0.12447916666666667" />
