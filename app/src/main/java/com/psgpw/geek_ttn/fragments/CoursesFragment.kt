@@ -55,7 +55,7 @@ class CoursesFragment : Fragment(),courseAdapter.ClickListener  {
     }
 
     override fun onItemClick(data: coursescreen?) {
-        TODO("Not yet implemented")
+//        TODO("Not yet implemented")
     }
 
     /* private fun setUpToolBar() {

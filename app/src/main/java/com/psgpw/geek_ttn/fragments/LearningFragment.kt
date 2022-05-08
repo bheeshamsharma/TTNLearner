@@ -56,6 +56,6 @@ class LearningFragment : Fragment(),mylearingadapter.ClickListener {
     }
 
     override fun onItemClick(data: mylearning?) {
-        TODO("Not yet implemented")
+//        TODO("Not yet implemented")
     }
 }
