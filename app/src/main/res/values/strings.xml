@@ -6,4 +6,10 @@
     <string name="title_assignments">Assignments</string>
     <string name="title_chat">Chat</string>
     <string name="google_api_key">AIzaSyAMVh5cqYrd7-EtTcyrY_2Fn3S6Mvu5fe0</string>
+    <string name="enroll_a_new_course">Enroll a new course</string>
+    <string name="powered_by_ttn">Powered by TTN</string>
+    <string name="signup_with_newer_id">Signup with newer id</string>
+    <string name="list_of_available_course">List of available course</string>
+    <string name="haven_t_found_your_course_raise_a_query_for_course">haven\'t found your course?</string>
+    <string name="raise_a_query_for_course">Raise a query for course</string>
 </resources>

@@ -7,23 +7,21 @@
 
 
     <fragment
-        android:id="@+id/navigation_learning"
-        android:name="com.psgpw.geek_ttn.fragments.ChatFragment"
-        android:label="@string/title_learning"
-        tools:layout="@layout/fragment_chat">
-
-    </fragment>
-
-    <fragment
         android:id="@+id/navigation_courses"
         android:name="com.psgpw.geek_ttn.fragments.CoursesFragment"
-        android:label="@string/title_courses"
+        android:label="@string/title_learning"
         tools:layout="@layout/fragment_courses">
 
         <action
-            android:id="@+id/action_navigation_courses_to_newCourseFragment"
+            android:id="@+id/action_navigation_learning_to_newCourseFragment"
             app:destination="@id/newCourseFragment" />
     </fragment>
+
+    <fragment
+        android:id="@+id/navigation_learning"
+        android:name="com.psgpw.geek_ttn.fragments.LearningFragment"
+        android:label="@string/title_courses"
+        tools:layout="@layout/fragment_learning"/>
 
     <fragment
         android:id="@+id/navigation_assignments"
