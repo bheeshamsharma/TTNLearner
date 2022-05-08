@@ -46,7 +46,7 @@ class AssignmentsFragment : Fragment(),assignmentadapter.ClickListener  {
     }
 
     override fun onItemClick(data: Course?) {
-        TODO("Not yet implemented")
+
     }
 
 }
