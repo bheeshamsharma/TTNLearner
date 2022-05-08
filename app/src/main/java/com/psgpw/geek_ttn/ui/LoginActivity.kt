@@ -83,18 +83,20 @@ class LoginActivity : AppCompatActivity() {
                 .inflate(R.layout.dialog_choose_role, viewGroup, false)
             builder.setView(dialogView)
             val name1 = account!!.displayName.toString()
-            callLoginApi(
+            viewModel.signIn(account?.idToken!!)
+            apiLoginSignUpObserver()
+            /*callLoginApi(
                 name = account!!.displayName.toString(),
                 email = account!!.email.toString()
-            )
-            dialogView.findViewById<TextView>(R.id.welcomename).text =
-                ("Welcome $name1 , to the learning world")
-            val alertDialog: AlertDialog = builder.create()
-            alertDialog.show()
-            dialogView.findViewById<TextView>(R.id.button3).setOnClickListener {
-                startActivity(Intent(this, MainActivity::class.java))
-                alertDialog.hide()
-            }
+            )*/
+            /* dialogView.findViewById<TextView>(R.id.welcomename).text =
+                 ("Welcome $name1 , to the learning world")
+             val alertDialog: AlertDialog = builder.create()
+             alertDialog.show()
+             dialogView.findViewById<TextView>(R.id.button3).setOnClickListener {
+                 startActivity(Intent(this, MainActivity::class.java))
+                 alertDialog.hide()
+             }*/
 
 //            var user:User= User("454",email = account!!.email.toString(),name = account!!.displayName.toString(),null)
 //            DataStoreManager(context = this@LoginActivity).saveUserToPreferencesStore(user)

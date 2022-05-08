@@ -1,18 +1,9 @@
 package com.psgpw.pickapp.data.network
 
-import android.net.Uri
-import android.util.Log
-import androidx.core.net.toFile
-import androidx.documentfile.provider.DocumentFile
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.psgpw.HireMe.data.ResponseData
 import com.psgpw.pickapp.data.models.*
-import okhttp3.MediaType
-import okhttp3.RequestBody
-
-import okhttp3.MultipartBody
-import java.io.File
 
 
 object ApiHelper {
@@ -24,8 +15,11 @@ object ApiHelper {
         return RetrofitFactory.apiService.signIn(objectToHashMap(baseRequest))
     }
 
-    suspend fun registerUser(baseRequest: BaseRequest): ResponseData<User> {
-        return RetrofitFactory.apiService.registerUser(objectToHashMap(baseRequest))
+    suspend fun registerUser(baseRequest: String): ResponseData<User> {
+        val hashMap: HashMap<String, String> = HashMap()
+        hashMap.put("provider", "google")
+        hashMap.put("access_token", baseRequest)
+        return RetrofitFactory.apiService.registerUser(LoginRequest("google", baseRequest))
     }
 //
 //    suspend fun forgotPassword(baseRequest: BaseRequest) {

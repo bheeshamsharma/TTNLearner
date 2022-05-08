@@ -23,4 +23,12 @@ class LoginViewModel() : ViewModel() {
 
         }
     }
+
+    fun signIn(token: String) {
+        viewModelScope.launch {
+            loginState = networkRepo.login(token).asLiveData()
+
+        }
+    }
+
 }

@@ -2,6 +2,7 @@ package com.psgpw.pickapp.data.network
 
 import com.psgpw.HireMe.data.ResponseData
 import com.psgpw.HireMe.data.models.UserDetail
+import com.psgpw.pickapp.data.models.LoginRequest
 import com.psgpw.pickapp.data.models.User
 import okhttp3.MultipartBody
 
@@ -15,8 +16,8 @@ interface ApiService {
     @POST("login")
     suspend fun signIn(@QueryMap queries: Map<String, String?>): ResponseData<User>
 
-    @POST("UserRegisterApi")
-    suspend fun registerUser(@QueryMap queries: Map<String, String?>): ResponseData<User>
+    @POST("login/")
+    suspend fun registerUser(@Body loginRequest: LoginRequest): ResponseData<User>
 
     @POST("ForgetpasswordApi")
     suspend fun forgetPassword(@Query("email") email : String): ResponseData<Nothing>

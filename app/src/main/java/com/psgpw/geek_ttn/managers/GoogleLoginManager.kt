@@ -13,6 +13,7 @@ object GoogleLoginManager {
 
     val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
         .requestEmail()
+        .requestIdToken("12530960803-tbs6t64n0l2f4g1d46gqg34369qej2sv.apps.googleusercontent.com")
         .build()
 
     fun getGoogleClient(activity: Activity): GoogleSignInClient {

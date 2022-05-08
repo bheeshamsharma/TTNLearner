@@ -37,8 +37,8 @@ class NetworkRepo {
     }.flowOn(Dispatchers.IO)
 
 
-    suspend fun registerUser(
-        baseRequest: BaseRequest
+    suspend fun login(
+        baseRequest: String
     ): Flow<ResultState<ResponseData<User>>> = flow {
         try {
             emit(ResultState.Loading)
