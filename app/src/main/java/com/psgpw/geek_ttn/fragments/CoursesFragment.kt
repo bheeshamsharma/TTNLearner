@@ -16,6 +16,8 @@ import com.psgpw.geek_ttn.adapters.CourseAdapter
 import com.psgpw.geek_ttn.data.dummymodel.Course
 import com.psgpw.geek_ttn.databinding.FragmentCoursesBinding
 import com.psgpw.geek_ttn.ui.MainActivity
+import com.psgpw.geek_ttn.ui.PlayerActivity
+import com.psgpw.geek_ttn.ui.TopicDetailActivity
 import com.psgpw.pickapp.data.models.ChatUser
 
 class CoursesFragment : Fragment(),CourseAdapter.ClickListener  {
@@ -55,6 +57,12 @@ class CoursesFragment : Fragment(),CourseAdapter.ClickListener  {
     }
 
     override fun onItemClick(data: Course?) {
+        startActivity(
+            Intent(
+                requireContext(),
+                TopicDetailActivity::class.java
+            )
+        )
 //        TODO("Not yet implemented")
     }
 
