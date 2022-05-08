@@ -42,7 +42,7 @@ class CoursesFragment : Fragment(),CourseAdapter.ClickListener  {
         adapterData.add(Course("Java"))
         adapterData.add(Course("Python"))
         adapterData.add(Course("Node"))
-        adapter = CourseAdapter(context!!, this, adapterData)
+        adapter = CourseAdapter(requireContext()!!, this, adapterData)
         recyclerViewChat.adapter = adapter
         recyclerViewChat.layoutManager = LinearLayoutManager(context)
     }

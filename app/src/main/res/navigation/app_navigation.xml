@@ -10,7 +10,11 @@
         android:id="@+id/navigation_courses"
         android:name="com.psgpw.geek_ttn.fragments.CoursesFragment"
         android:label="@string/title_learning"
-        tools:layout="@layout/fragment_courses"/>
+        tools:layout="@layout/fragment_courses">
+        <action
+            android:id="@+id/action_navigation_courses_to_newCourseFragment"
+            app:destination="@id/newCourseFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_learning"

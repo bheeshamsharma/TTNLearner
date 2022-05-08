@@ -5,8 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="@dimen/_4sdp"
+    android:layout_marginBottom="@dimen/_5sdp"
     cardView:cardCornerRadius="4dp"
-    android:padding="@dimen/_18sdp"
     cardView:cardElevation="4dp">
 
     <LinearLayout
@@ -15,7 +15,7 @@
         android:orientation="horizontal"
 
         android:weightSum="8"
-        android:padding="@dimen/_12sdp">
+        android:padding="@dimen/_4sdp">
 
 
         <TextView

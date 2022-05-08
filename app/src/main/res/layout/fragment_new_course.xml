@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/screencolor"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="@dimen/_4sdp"
+    android:background="@color/screencolor"
     android:padding="@dimen/_4sdp">
 
     <EditText
@@ -29,10 +30,10 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
+
         android:layout_marginTop="8dp"
         android:layout_marginEnd="5dp"
         android:ems="10"
-
         android:fontFamily="@font/roboto_regular"
         android:gravity="start|top"
         android:hint="discription if any"
@@ -47,9 +48,9 @@
         android:id="@+id/editTextTextPersonName2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+
         android:layout_marginStart="5dp"
         android:layout_marginTop="9dp"
-
         android:layout_marginEnd="5dp"
         android:ems="10"
         android:fontFamily="@font/roboto_regular"
@@ -68,18 +69,18 @@
         android:layout_marginTop="83dp"
         android:text="Submit"
         android:textColor="#F6F2F2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/editTextTextPersonName2"
+        app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName2"
         app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName2" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="5dp"
-        android:fontFamily="@font/roboto_regular"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="32dp"
+        android:fontFamily="@font/roboto_bold"
         android:text="Raise a query for new course"
         android:textColor="@color/black"
         android:textSize="20sp"

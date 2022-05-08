@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import assignmentadapter
 import com.psgpw.geek_ttn.data.dummymodel.Course
 import com.psgpw.geek_ttn.databinding.FragmentAssignmentsBinding
+import com.psgpw.geek_ttn.ui.MainActivity
 
 class AssignmentsFragment : Fragment(),assignmentadapter.ClickListener  {
     lateinit var binding: FragmentAssignmentsBinding
@@ -35,7 +36,7 @@ class AssignmentsFragment : Fragment(),assignmentadapter.ClickListener  {
         adapterData.add(Course("Assignment 4"))
         adapterData.add(Course("Assignment 5"))
         adapterData.add(Course("Assignment 6"))
-        adapter = assignmentadapter(context!!, this, adapterData)
+        adapter = assignmentadapter(requireContext()!!, this, adapterData)
         recyclerViewChat.adapter = adapter
         recyclerViewChat.layoutManager = LinearLayoutManager(context)
 
@@ -43,6 +44,8 @@ class AssignmentsFragment : Fragment(),assignmentadapter.ClickListener  {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        ((activity as MainActivity).setuptoolbar("Assignment "))
+
     }
 
     override fun onItemClick(data: Course?) {
