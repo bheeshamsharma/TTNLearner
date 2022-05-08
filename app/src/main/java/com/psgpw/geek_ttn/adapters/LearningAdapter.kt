@@ -8,16 +8,15 @@ import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.psgpw.geek_ttn.R
-import com.psgpw.geek_ttn.data.dummymodel.mylearning
-import com.psgpw.geek_ttn.fragments.LearningFragment
-import com.psgpw.pickapp.data.models.ChatUser
+import com.psgpw.geek_ttn.data.dummymodel.Learning
 
-class mylearingadapter(val context:Context,var listener:ClickListener,var list:List<mylearning>):
-    RecyclerView.Adapter<mylearingadapter.ViewHolder>() {
+class LearningAdapter(val context: Context, var listener: ClickListener, var list: List<Learning>) :
+    RecyclerView.Adapter<LearningAdapter.ViewHolder>() {
 
     interface ClickListener {
-        fun onItemClick(data: mylearning?)
+        fun onItemClick(data: Learning?)
     }
+
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         var cousrename: TextView = view.findViewById(R.id.cousrename)
         var rating: TextView = view.findViewById(R.id.rating)
@@ -32,7 +31,7 @@ class mylearingadapter(val context:Context,var listener:ClickListener,var list:L
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.row_learning, parent, false)
-        return mylearingadapter.ViewHolder(view)
+        return ViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {

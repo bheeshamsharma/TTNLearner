@@ -12,7 +12,7 @@ import retrofit2.http.*
 
 interface ApiService {
 
-    @POST("LoginApi")
+    @POST("login")
     suspend fun signIn(@QueryMap queries: Map<String, String?>): ResponseData<User>
 
     @POST("UserRegisterApi")

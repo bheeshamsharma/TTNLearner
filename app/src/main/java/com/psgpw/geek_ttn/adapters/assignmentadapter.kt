@@ -5,17 +5,16 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.psgpw.geek_ttn.R
-import com.psgpw.geek_ttn.data.dummymodel.coursescreen
-import com.psgpw.pickapp.data.models.ChatUser
+import com.psgpw.geek_ttn.data.dummymodel.Course
 
 class assignmentadapter(
     val context: Context,
     var listener: ClickListener,
-    var list: List<coursescreen>
+    var list: List<Course>
 ) :
     RecyclerView.Adapter<assignmentadapter.ViewHolder>() {
     interface ClickListener {
-        fun onItemClick(data: coursescreen?)
+        fun onItemClick(data: Course?)
     }
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         var cousrename: TextView = view.findViewById(R.id.cousrename)
@@ -34,7 +33,7 @@ class assignmentadapter(
 
     override fun onBindViewHolder(holder: assignmentadapter.ViewHolder, position: Int) {
         val item = list[position]
-        holder.cousrename.text = item.coursename
+        holder.cousrename.text = item.name
 
         holder.itemView.setOnClickListener {
             listener.onItemClick(item)

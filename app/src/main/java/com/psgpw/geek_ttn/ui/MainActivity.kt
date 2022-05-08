@@ -13,15 +13,15 @@ import com.psgpw.geek_ttn.R
 class MainActivity : AppCompatActivity() {
 
     private lateinit var navController: NavController
-     var toolbar: Toolbar? =null
+    var toolbar: Toolbar? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        toolbar=findViewById(R.id.toolbar_gchannel)
-        setuptoolbar("d")
+        toolbar = findViewById(R.id.toolbar_gchannel)
+         setuptoolbar("My Learning")
 
-        setSupportActionBar(findViewById(R.id.toolbar_gchannel))
+         setSupportActionBar(findViewById(R.id.toolbar_gchannel))
 
         val navView = findViewById<BottomNavigationView>(R.id.nav_view)
         // Passing each menu ID as a set of Ids because each
@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity() {
         //NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(navView, navController)
         val actionBar: ActionBar? = supportActionBar
-       // actionBar!!.setTitle(s)
+         //actionBar!!.setTitle("My Learning")
     }
 
     public fun setuptoolbar(s: String) {
@@ -38,6 +38,7 @@ class MainActivity : AppCompatActivity() {
         if (toolbar != null) {
             toolbar!!.setTitle(s);
             setSupportActionBar(toolbar);
+            //supportActionBar!!.title = s
         }
 
     }

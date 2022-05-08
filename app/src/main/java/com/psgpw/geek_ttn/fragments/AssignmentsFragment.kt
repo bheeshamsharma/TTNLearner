@@ -1,8 +1,6 @@
 package com.psgpw.geek_ttn.fragments
 
-import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -10,15 +8,13 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import assignmentadapter
-import com.psgpw.geek_ttn.adapters.courseAdapter
-import com.psgpw.geek_ttn.data.dummymodel.coursescreen
+import com.psgpw.geek_ttn.data.dummymodel.Course
 import com.psgpw.geek_ttn.databinding.FragmentAssignmentsBinding
-import com.psgpw.geek_ttn.databinding.FragmentCoursesBinding
 
 class AssignmentsFragment : Fragment(),assignmentadapter.ClickListener  {
     lateinit var binding: FragmentAssignmentsBinding
     private lateinit var adapter: assignmentadapter
-    private var adapterData: ArrayList<coursescreen> = ArrayList()
+    private var adapterData: ArrayList<Course> = ArrayList()
     private lateinit var recyclerViewChat: RecyclerView
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,12 +29,12 @@ class AssignmentsFragment : Fragment(),assignmentadapter.ClickListener  {
     }
 
     private fun initview(binding: FragmentAssignmentsBinding) {
-        adapterData.add(coursescreen("Assignment 1"))
-        adapterData.add(coursescreen("Assignment 2"))
-        adapterData.add(coursescreen("Assignment 3"))
-        adapterData.add(coursescreen("Assignment 4"))
-        adapterData.add(coursescreen("Assignment 5"))
-        adapterData.add(coursescreen("Assignment 6"))
+        adapterData.add(Course("Assignment 1"))
+        adapterData.add(Course("Assignment 2"))
+        adapterData.add(Course("Assignment 3"))
+        adapterData.add(Course("Assignment 4"))
+        adapterData.add(Course("Assignment 5"))
+        adapterData.add(Course("Assignment 6"))
         adapter = assignmentadapter(context!!, this, adapterData)
         recyclerViewChat.adapter = adapter
         recyclerViewChat.layoutManager = LinearLayoutManager(context)
@@ -49,7 +45,7 @@ class AssignmentsFragment : Fragment(),assignmentadapter.ClickListener  {
         super.onViewCreated(view, savedInstanceState)
     }
 
-    override fun onItemClick(data: coursescreen?) {
+    override fun onItemClick(data: Course?) {
         TODO("Not yet implemented")
     }
 

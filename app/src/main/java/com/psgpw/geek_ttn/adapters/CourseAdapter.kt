@@ -7,18 +7,18 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.psgpw.geek_ttn.R
-import com.psgpw.geek_ttn.data.dummymodel.coursescreen
-import com.psgpw.pickapp.data.models.ChatUser
+import com.psgpw.geek_ttn.data.dummymodel.Course
 
-class courseAdapter(
+class CourseAdapter(
     val context: Context,
     var listener: ClickListener,
-    var list: List<coursescreen>
+    var list: List<Course>
 ) :
-    RecyclerView.Adapter<courseAdapter.ViewHolder>() {
+    RecyclerView.Adapter<CourseAdapter.ViewHolder>() {
     interface ClickListener {
-        fun onItemClick(data: coursescreen?)
+        fun onItemClick(data: Course?)
     }
+
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         var tvname: TextView = view.findViewById(R.id.tv_name)
 
@@ -28,19 +28,20 @@ class courseAdapter(
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): courseAdapter.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CourseAdapter.ViewHolder {
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.course_list, parent, false)
-        return courseAdapter.ViewHolder(view)
+        return CourseAdapter.ViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: courseAdapter.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: CourseAdapter.ViewHolder, position: Int) {
         val item = list[position]
-        holder.tvname.text = item.coursename
+        holder.tvname.text = item.name
 
         holder.itemView.setOnClickListener {
             listener.onItemClick(item)
-        }    }
+        }
+    }
 
     override fun getItemCount(): Int {
         return list.size

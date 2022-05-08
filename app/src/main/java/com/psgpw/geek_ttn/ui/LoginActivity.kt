@@ -24,7 +24,7 @@ import com.psgpw.HireMe.data.ResultState
 import com.psgpw.geek_ttn.R
 import com.psgpw.geek_ttn.databinding.ActivityLoginBinding
 import com.psgpw.geek_ttn.managers.GoogleLoginManager
-import com.psgpw.geek_ttn.viewmodels.LearningViewModel
+import com.psgpw.geek_ttn.viewmodels.LoginViewModel
 import com.psgpw.pickapp.data.DataStoreManager
 import com.psgpw.pickapp.data.models.SignInRequest
 import com.psgpw.pickapp.data.models.User
@@ -34,7 +34,7 @@ import kotlinx.coroutines.launch
 class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
 
-    val viewModel: LearningViewModel by viewModels<LearningViewModel>()
+    val viewModel: LoginViewModel by viewModels<LoginViewModel>()
 
     private lateinit var mGoogleSignInClient: GoogleSignInClient
     private var account: GoogleSignInAccount? = null
@@ -71,27 +71,28 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-    private  fun handleSignInResult(completedTask: Task<GoogleSignInAccount>) {
+    private fun handleSignInResult(completedTask: Task<GoogleSignInAccount>) {
         try {
             account = completedTask.getResult(ApiException::class.java)
             Log.d("Learning Page : Name", account!!.displayName.toString())
             Log.d("Learning Page : Email", account!!.email.toString())
+
+            val builder: AlertDialog.Builder = AlertDialog.Builder(this)
+            val viewGroup = findViewById<ViewGroup>(android.R.id.content)
+            val dialogView: View = LayoutInflater.from(applicationContext)
+                .inflate(R.layout.dialog_choose_role, viewGroup, false)
+            builder.setView(dialogView)
+            val name1 = account!!.displayName.toString()
             callLoginApi(
                 name = account!!.displayName.toString(),
                 email = account!!.email.toString()
             )
-
-            val builder: AlertDialog.Builder = AlertDialog.Builder(this)
-            val viewGroup = findViewById<ViewGroup>(android.R.id.content)
-            val dialogView: View = LayoutInflater.from(applicationContext).inflate(R.layout.dialog_choose_role, viewGroup, false)
-            builder.setView(dialogView)
-            var name1 = account!!.displayName.toString()
-
-            dialogView.findViewById<TextView>(R.id.welcomename).text=("Welcome $name1 , to the learning world")
+            dialogView.findViewById<TextView>(R.id.welcomename).text =
+                ("Welcome $name1 , to the learning world")
             val alertDialog: AlertDialog = builder.create()
             alertDialog.show()
             dialogView.findViewById<TextView>(R.id.button3).setOnClickListener {
-                startActivity(Intent(this,MainActivity::class.java))
+                startActivity(Intent(this, MainActivity::class.java))
                 alertDialog.hide()
             }
 

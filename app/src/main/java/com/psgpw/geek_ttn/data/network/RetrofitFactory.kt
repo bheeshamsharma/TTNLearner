@@ -8,7 +8,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
 object RetrofitFactory {
-    private const val BASE_URL = "https://ttn.learner.com/"
+    private const val BASE_URL = "http://13.127.79.54:8080/api/accounts/oauth/"
     val apiService: ApiService = getRetrofit().create(ApiService::class.java)
 
     val client: OkHttpClient

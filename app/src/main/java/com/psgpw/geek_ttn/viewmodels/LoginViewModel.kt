@@ -11,7 +11,7 @@ import com.psgpw.pickapp.data.models.User
 import com.psgpw.pickapp.data.repos.NetworkRepo
 import kotlinx.coroutines.launch
 
-class LearningViewModel() : ViewModel() {
+class LoginViewModel() : ViewModel() {
 
     private val networkRepo = NetworkRepo()
 
