@@ -1,4 +1,5 @@
-package com.example.greekcompactapp.fragment
+package com.psgpw.geek_ttn.fragments
+
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
