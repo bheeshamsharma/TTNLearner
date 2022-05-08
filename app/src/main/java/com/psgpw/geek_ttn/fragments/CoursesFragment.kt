@@ -12,16 +12,16 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.psgpw.geek_ttn.R
 import com.psgpw.geek_ttn.adapters.ChatAdapter
-import com.psgpw.geek_ttn.adapters.courseAdapter
-import com.psgpw.geek_ttn.data.dummymodel.coursescreen
+import com.psgpw.geek_ttn.adapters.CourseAdapter
+import com.psgpw.geek_ttn.data.dummymodel.Course
 import com.psgpw.geek_ttn.databinding.FragmentCoursesBinding
 import com.psgpw.geek_ttn.ui.MainActivity
 import com.psgpw.pickapp.data.models.ChatUser
 
-class CoursesFragment : Fragment(),courseAdapter.ClickListener  {
+class CoursesFragment : Fragment(),CourseAdapter.ClickListener  {
     lateinit var binding: FragmentCoursesBinding
-    private lateinit var adapter: courseAdapter
-    private var adapterData: ArrayList<coursescreen> = ArrayList()
+    private lateinit var adapter: CourseAdapter
+    private var adapterData: ArrayList<Course> = ArrayList()
     private lateinit var recyclerViewChat: RecyclerView
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -36,13 +36,13 @@ class CoursesFragment : Fragment(),courseAdapter.ClickListener  {
     }
 
     private fun initview(binding: FragmentCoursesBinding) {
-        adapterData.add(coursescreen("Android"))
-        adapterData.add(coursescreen("IOS"))
-        adapterData.add(coursescreen("React"))
-        adapterData.add(coursescreen("Java"))
-        adapterData.add(coursescreen("Python"))
-        adapterData.add(coursescreen("Node"))
-        adapter = courseAdapter(context!!, this, adapterData)
+        adapterData.add(Course("Android"))
+        adapterData.add(Course("IOS"))
+        adapterData.add(Course("React"))
+        adapterData.add(Course("Java"))
+        adapterData.add(Course("Python"))
+        adapterData.add(Course("Node"))
+        adapter = CourseAdapter(context!!, this, adapterData)
         recyclerViewChat.adapter = adapter
         recyclerViewChat.layoutManager = LinearLayoutManager(context)
     }
@@ -54,7 +54,7 @@ class CoursesFragment : Fragment(),courseAdapter.ClickListener  {
         //setUpToolBar()
     }
 
-    override fun onItemClick(data: coursescreen?) {
+    override fun onItemClick(data: Course?) {
 //        TODO("Not yet implemented")
     }
 
