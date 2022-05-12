@@ -4,26 +4,25 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.RatingBar
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.psgpw.geek_ttn.R
-import com.psgpw.geek_ttn.data.dummymodel.Course
+import com.psgpw.geek_ttn.data.dummymodel.SubTopic
+import com.psgpw.geek_ttn.data.dummymodel.Topic
 
-class CourseAdapter(
+class SubTopicAdapter(
     val context: Context,
     var listener: ClickListener,
-    var list: List<Course>
+    var list: List<SubTopic>
 ) :
-    RecyclerView.Adapter<CourseAdapter.ViewHolder>() {
+    RecyclerView.Adapter<SubTopicAdapter.ViewHolder>() {
     interface ClickListener {
-        fun onItemClick(data: Course?)
+        fun onItemClick(data: SubTopic?)
     }
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         var tvname: TextView = view.findViewById(R.id.tv_name)
         var tvDesc: TextView = view.findViewById(R.id.tv_desc)
-        var ratingBar: RatingBar = view.findViewById(R.id.rating)
 
         init {
 
@@ -31,17 +30,16 @@ class CourseAdapter(
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CourseAdapter.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SubTopicAdapter.ViewHolder {
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.course_list, parent, false)
-        return CourseAdapter.ViewHolder(view)
+        return SubTopicAdapter.ViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: CourseAdapter.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: SubTopicAdapter.ViewHolder, position: Int) {
         val item = list[position]
-        holder.tvname.text = item.course_name
+        holder.tvname.text = item.stopic_name
         holder.tvDesc.text = item.description
-        holder.ratingBar.rating = item.rating.toFloat()
 
         holder.itemView.setOnClickListener {
             listener.onItemClick(item)

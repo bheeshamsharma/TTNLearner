@@ -4,6 +4,10 @@ import android.app.Application
 import android.net.Uri
 import com.psgpw.HireMe.data.ResponseData
 import com.psgpw.HireMe.data.ResultState
+import com.psgpw.geek_ttn.data.dummymodel.Course
+import com.psgpw.geek_ttn.data.dummymodel.SubTopic
+import com.psgpw.geek_ttn.data.dummymodel.Topic
+import com.psgpw.geek_ttn.data.models.request.LoginRequest
 import com.psgpw.pickapp.data.models.BaseRequest
 import com.psgpw.pickapp.data.models.User
 import com.psgpw.pickapp.data.network.ApiHelper
@@ -38,15 +42,88 @@ class NetworkRepo {
 
 
     suspend fun login(
-        baseRequest: String
-    ): Flow<ResultState<ResponseData<User>>> = flow {
+        loginRequest: LoginRequest
+    ): Flow<ResultState<User?>> = flow {
         try {
             emit(ResultState.Loading)
-            val responseData = ApiHelper.registerUser(baseRequest)
-            if (responseData.status) {
-                emit(ResultState.Success(responseData))
+            val responseData = ApiHelper.registerUser(loginRequest)
+            if (responseData.isSuccessful) {
+                responseData.body().let {
+                    emit(ResultState.Success(it))
+                }
             } else {
-                emit(ResultState.Error(Exception(responseData.message)))
+                emit(ResultState.Error(Exception(responseData.errorBody().toString())))
+            }
+        } catch (ex: Exception) {
+            emit(ResultState.Error(ex))
+        }
+    }.flowOn(Dispatchers.IO)
+
+    suspend fun getCourses(
+    ): Flow<ResultState<List<Course>?>> = flow {
+        try {
+            emit(ResultState.Loading)
+            val responseData = ApiHelper.getCourses()
+            if (responseData.isSuccessful) {
+                responseData.body().let {
+                    emit(ResultState.Success(it))
+                }
+            } else {
+                emit(ResultState.Error(Exception(responseData.errorBody().toString())))
+            }
+        } catch (ex: Exception) {
+            emit(ResultState.Error(ex))
+        }
+    }.flowOn(Dispatchers.IO)
+
+    suspend fun getTopics(
+        courseId: String
+    ): Flow<ResultState<List<Topic>?>> = flow {
+        try {
+            emit(ResultState.Loading)
+            val responseData = ApiHelper.getTopicList(courseId)
+            if (responseData.isSuccessful) {
+                responseData.body().let {
+                    emit(ResultState.Success(it))
+                }
+            } else {
+                emit(ResultState.Error(Exception(responseData.errorBody().toString())))
+            }
+        } catch (ex: Exception) {
+            emit(ResultState.Error(ex))
+        }
+    }.flowOn(Dispatchers.IO)
+
+    suspend fun getSubTopics(
+        topicId: String
+    ): Flow<ResultState<List<SubTopic>?>> = flow {
+        try {
+            emit(ResultState.Loading)
+            val responseData = ApiHelper.getSubTopicList(topicId)
+            if (responseData.isSuccessful) {
+                responseData.body().let {
+                    emit(ResultState.Success(it))
+                }
+            } else {
+                emit(ResultState.Error(Exception(responseData.errorBody().toString())))
+            }
+        } catch (ex: Exception) {
+            emit(ResultState.Error(ex))
+        }
+    }.flowOn(Dispatchers.IO)
+
+    suspend fun getSubTopicDetail(
+        subTopicId: String
+    ): Flow<ResultState<SubTopic?>> = flow {
+        try {
+            emit(ResultState.Loading)
+            val responseData = ApiHelper.getSubTopicDetail(subTopicId)
+            if (responseData.isSuccessful) {
+                responseData.body().let {
+                    emit(ResultState.Success(it))
+                }
+            } else {
+                emit(ResultState.Error(Exception(responseData.errorBody().toString())))
             }
         } catch (ex: Exception) {
             emit(ResultState.Error(ex))

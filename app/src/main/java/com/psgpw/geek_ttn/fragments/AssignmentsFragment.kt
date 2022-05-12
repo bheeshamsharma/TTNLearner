@@ -30,12 +30,12 @@ class AssignmentsFragment : Fragment(),assignmentadapter.ClickListener  {
     }
 
     private fun initview(binding: FragmentAssignmentsBinding) {
-        adapterData.add(Course("Assignment 1"))
-        adapterData.add(Course("Assignment 2"))
-        adapterData.add(Course("Assignment 3"))
-        adapterData.add(Course("Assignment 4"))
-        adapterData.add(Course("Assignment 5"))
-        adapterData.add(Course("Assignment 6"))
+      /*  adapterData.add(Course("Android (Security) Assignment"))
+        adapterData.add(Course("Android (Collection) Assignment"))
+        adapterData.add(Course("Android (Design Pattern) Assignment"))
+        adapterData.add(Course("IOS (Swift) Assignment"))*/
+       /* adapterData.add(Course("Assignment 5"))
+        adapterData.add(Course("Assignment 6"))*/
         adapter = assignmentadapter(requireContext()!!, this, adapterData)
         recyclerViewChat.adapter = adapter
         recyclerViewChat.layoutManager = LinearLayoutManager(context)

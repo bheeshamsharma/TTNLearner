@@ -24,7 +24,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:background="@color/colorPrimary"
+        android:background="@color/primary"
         android:theme="@style/Widget.AppCompat.Toolbar"
         app:layout_constraintBottom_toTopOf="@+id/cardView"
         app:layout_constraintEnd_toEndOf="parent"
@@ -32,14 +32,24 @@
         app:layout_constraintTop_toBottomOf="@+id/layout_group_chat"
         app:popupTheme="@style/Theme.AppCompat.Light">
 
+        <TextView
+            android:id="@+id/toolbar_title"
+            style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/roboto_bold"
+            android:gravity="center"
+            android:text="Title" />
+
     </androidx.appcompat.widget.Toolbar>
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_10sdp"
         android:layout_marginHorizontal="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_10sdp"
         app:cardCornerRadius="@dimen/_3sdp"
         app:cardElevation="@dimen/_5sdp"
         app:layout_constraintTop_toBottomOf="@+id/toolbar_gchannel">
@@ -50,9 +60,10 @@
             android:fontFamily="@font/roboto_regular"
             android:gravity="start"
             android:padding="@dimen/_3sdp"
+            android:textColor="@color/black"
             android:text="Activity Lifecycle \n
 The activity lifecycle is the set of states an activity can be in during its entire lifetime, from the time it is initially created to when it is destroyed."
-            android:textSize="@dimen/_12ssp" />
+            android:textSize="@dimen/_11ssp" />
     </androidx.cardview.widget.CardView>
 
     <TextView
@@ -63,7 +74,8 @@ The activity lifecycle is the set of states an activity can be in during its ent
         android:fontFamily="@font/roboto_bold"
         android:paddingHorizontal="@dimen/_10sdp"
         android:text="Ref. Link:"
-        android:textSize="@dimen/_12ssp"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_13ssp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cardView" />
 
@@ -87,7 +99,8 @@ The activity lifecycle is the set of states an activity can be in during its ent
         android:fontFamily="@font/roboto_bold"
         android:paddingHorizontal="@dimen/_10sdp"
         android:text="Ref. Video:"
-        android:textSize="@dimen/_12ssp"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_13ssp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_ref_link_1" />
 
@@ -109,7 +122,7 @@ The activity lifecycle is the set of states an activity can be in during its ent
         android:paddingHorizontal="@dimen/_15sdp"
         android:paddingVertical="@dimen/_5sdp"
         android:text="Watch Video"
-        android:textAllCaps="false"
+        android:textAllCaps="true"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/iv_video1" />
@@ -123,6 +136,7 @@ The activity lifecycle is the set of states an activity can be in during its ent
         android:paddingHorizontal="@dimen/_10sdp"
         android:text="Done with your topic, then what are you waiting for?"
         android:textSize="@dimen/_12ssp"
+        android:textColor="@color/black"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_watch_video" />
 
@@ -134,7 +148,7 @@ The activity lifecycle is the set of states an activity can be in during its ent
         android:paddingHorizontal="@dimen/_15sdp"
         android:paddingVertical="@dimen/_5sdp"
         android:text="Submit your assignment"
-        android:textAllCaps="false"
+        android:textAllCaps="true"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_done_topic" />
@@ -149,6 +163,7 @@ The activity lifecycle is the set of states an activity can be in during its ent
         android:paddingHorizontal="@dimen/_10sdp"
         android:text="Have any query, Talk to our Expert."
         android:textSize="@dimen/_12ssp"
+        android:textColor="@color/black"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_submit_assignment" />
 
@@ -160,7 +175,7 @@ The activity lifecycle is the set of states an activity can be in during its ent
         android:paddingHorizontal="@dimen/_15sdp"
         android:paddingVertical="@dimen/_5sdp"
         android:text="Chat with Expert"
-        android:textAllCaps="false"
+        android:textAllCaps="true"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_talk_expert" />

@@ -2,10 +2,13 @@ package com.psgpw.geek_ttn.ui
 
 import android.content.Intent
 import android.os.Bundle
+import android.provider.MediaStore
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.RadioButton
+import android.widget.RadioGroup
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.viewModels
@@ -22,6 +25,7 @@ import com.google.android.gms.tasks.Task
 import com.psgpw.HireMe.data.ResponseData
 import com.psgpw.HireMe.data.ResultState
 import com.psgpw.geek_ttn.R
+import com.psgpw.geek_ttn.data.models.request.LoginRequest
 import com.psgpw.geek_ttn.databinding.ActivityLoginBinding
 import com.psgpw.geek_ttn.managers.GoogleLoginManager
 import com.psgpw.geek_ttn.viewmodels.LoginViewModel
@@ -77,32 +81,57 @@ class LoginActivity : AppCompatActivity() {
             Log.d("Learning Page : Name", account!!.displayName.toString())
             Log.d("Learning Page : Email", account!!.email.toString())
 
+            val name = account!!.displayName.toString()
+            val email = account!!.email.toString()
+            //val accessToken = "ggjgjgugjgjgjgjjgjgjgggjggjgjggjgjjjjjgggjg"
+            val accessToken = account!!.idToken.toString()
             val builder: AlertDialog.Builder = AlertDialog.Builder(this)
             val viewGroup = findViewById<ViewGroup>(android.R.id.content)
             val dialogView: View = LayoutInflater.from(applicationContext)
                 .inflate(R.layout.dialog_choose_role, viewGroup, false)
             builder.setView(dialogView)
-            val name1 = account!!.displayName.toString()
-            viewModel.signIn(account?.idToken!!)
-            apiLoginSignUpObserver()
-            /*callLoginApi(
-                name = account!!.displayName.toString(),
-                email = account!!.email.toString()
-            )*/
-            /* dialogView.findViewById<TextView>(R.id.welcomename).text =
-                 ("Welcome $name1 , to the learning world")
-             val alertDialog: AlertDialog = builder.create()
-             alertDialog.show()
-             dialogView.findViewById<TextView>(R.id.button3).setOnClickListener {
-                 startActivity(Intent(this, MainActivity::class.java))
-                 alertDialog.hide()
-             }*/
+            dialogView.findViewById<TextView>(R.id.welcomename).text =
+                ("Welcome $name , to the learning world")
+            val radioGroup = dialogView.findViewById<RadioGroup>(R.id.radioGroup)
+            val alertDialog: AlertDialog = builder.create()
+            alertDialog.setCancelable(false)
+            alertDialog.show()
+            dialogView.findViewById<TextView>(R.id.button3).setOnClickListener {
+                val selectedID = radioGroup.checkedRadioButtonId
+                if (selectedID != -1) {
+                    val radioButton = dialogView.findViewById<RadioButton>(selectedID)
+                    val loginRequest: LoginRequest
+                    if (radioButton.text.equals("Learner")) {
+                        loginRequest = LoginRequest(
+                            username = name,
+                            email = email,
+                            access_token = accessToken,
+                            is_learner = true,
+                            is_expert = false
+                        )
+                    } else {
+                        loginRequest = LoginRequest(
+                            email = email,
+                            username = name,
+                            access_token = accessToken,
+                            is_learner = false,
+                            is_expert = true
+                        )
+                    }
+                    callLoginApi(loginRequest)
+                    apiLoginSignUpObserver()
+                    alertDialog.dismiss()
+                } else {
+                    Toast.makeText(
+                        this,
+                        "Please select your Role.",
+                        Toast.LENGTH_LONG
+                    )
+                        .show()
+                }
+            }
 
-//            var user:User= User("454",email = account!!.email.toString(),name = account!!.displayName.toString(),null)
-//            DataStoreManager(context = this@LoginActivity).saveUserToPreferencesStore(user)
-//            openRoleSelectionActivity()
 
-            //apiLoginSignUpObserver()
         } catch (e: ApiException) {
             Log.w("LoginActivity", "signInResult:failed code=" + e.statusCode)
             Toast.makeText(
@@ -114,16 +143,12 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-    private fun callLoginApi(name: String, email: String) {
-        viewModel.signInRegisterUser(
-            SignInRequest(
-                name = name, email = email
-            )
-        )
+    private fun callLoginApi(loginRequest: LoginRequest) {
+        viewModel.signIn(loginRequest)
     }
 
     private fun apiLoginSignUpObserver() {
-        viewModel.loginState.observe(this, Observer<ResultState<ResponseData<User>>> {
+        viewModel.loginState.observe(this, Observer<ResultState<User?>> {
             when (it) {
                 is ResultState.Loading -> binding.progress.progressBar.visibility = View.VISIBLE
                 is ResultState.Error -> {
@@ -133,18 +158,18 @@ class LoginActivity : AppCompatActivity() {
                 }
                 is ResultState.Success -> {
                     binding.progress.progressBar.visibility = View.GONE
-                    Toast.makeText(this, it.data.message, Toast.LENGTH_SHORT).show()
+                    //Toast.makeText(this, it.data.message, Toast.LENGTH_SHORT).show()
                     Log.d("Login Data", it.data.toString())
                     lifecycleScope.launch {
-                        DataStoreManager(context = this@LoginActivity).saveUserToPreferencesStore(it.data.data)
+                        DataStoreManager(context = this@LoginActivity).saveUserToPreferencesStore(it.data!!)
                     }
-                    openRoleSelectionActivity()
+                    openMainActivity()
                 }
             }
         })
     }
 
-    private fun openRoleSelectionActivity() {
+    private fun openMainActivity() {
         startActivity(
             Intent(
                 this@LoginActivity,
@@ -154,17 +179,5 @@ class LoginActivity : AppCompatActivity() {
         finish()
     }
 
-    private fun logout() {
-        lifecycleScope.launch {
-            DataStoreManager(this@LoginActivity).userLogout()
-            signOutFromGoogle()
-        }
-    }
 
-    private fun signOutFromGoogle() {
-        val mGoogleSignInClient = GoogleLoginManager.getGoogleClient(this)
-        mGoogleSignInClient.signOut().addOnCompleteListener(this, OnCompleteListener {
-
-        })
-    }
 }

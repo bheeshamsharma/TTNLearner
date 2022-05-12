@@ -25,8 +25,9 @@ class NewCourseFragment : Fragment() {
     }
 
     private fun initView() {
+        ((activity as MainActivity).setuptoolbar("Request Course"))
         bindind.button.setOnClickListener {
-            Toast.makeText(requireContext(), "course noted", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), "Course Request Submitted", Toast.LENGTH_SHORT).show()
             startActivity(
                 Intent(
                     requireContext(),

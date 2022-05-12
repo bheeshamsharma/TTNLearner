@@ -24,13 +24,23 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:background="@color/colorPrimary"
+        android:background="@color/primary"
         android:theme="@style/Widget.AppCompat.Toolbar"
         app:layout_constraintBottom_toTopOf="@+id/video_player"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/layout_group_chat"
         app:popupTheme="@style/Theme.AppCompat.Light">
+
+        <TextView
+            android:id="@+id/toolbar_title"
+            style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/roboto_bold"
+            android:gravity="center"
+            android:text="Title" />
 
     </androidx.appcompat.widget.Toolbar>
 
@@ -47,6 +57,7 @@
         android:layout_marginTop="@dimen/_10sdp"
         android:fontFamily="@font/roboto_regular"
         android:paddingHorizontal="@dimen/_10sdp"
+        android:textColor="@color/black"
         android:text="In this video, we will see how to create a basic layout using linear, constrained and relative layout in android along with other tips and tricks"
         android:textSize="@dimen/_12ssp"
 
@@ -60,6 +71,7 @@
         android:fontFamily="@font/roboto_bold"
         android:paddingHorizontal="@dimen/_10sdp"
         android:text="Lectures"
+        android:textColor="@color/black"
         android:textSize="@dimen/_14ssp"
         app:layout_constraintTop_toBottomOf="@id/video_description" />
 

@@ -1,10 +1,10 @@
 package com.psgpw.pickapp.data.models
 
 data class User(
-    val id :String? = null,
+    val id :String,
     val email :String,
-    val name :String? = null,
-    val profile_image   :String? = null,
+    val username :String? = null,
+    val access_token   :String? = null,
 ) {
 }
 

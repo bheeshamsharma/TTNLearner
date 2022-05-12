@@ -8,8 +8,10 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
 object RetrofitFactory {
-    private const val BASE_URL = "http://13.127.79.54:8080/api/accounts/oauth/"
+    private const val BASE_URL_LOGIN = "http://13.127.79.54/api/accounts/oauth/"
+    private const val BASE_URL = "http://13.127.79.54/"
     val apiService: ApiService = getRetrofit().create(ApiService::class.java)
+    val apiServiceLogin: ApiService = getRetrofitLogin().create(ApiService::class.java)
 
     val client: OkHttpClient
         get() {
@@ -23,6 +25,12 @@ object RetrofitFactory {
                 .addInterceptor(interceptor)  /// show all JSON in logCat
             return httpBuilder.build()
         }
+
+    private fun getRetrofitLogin(): Retrofit = Retrofit.Builder()
+        .baseUrl(BASE_URL_LOGIN)
+        .client(client)
+        .addConverterFactory(GsonConverterFactory.create())
+        .build()
 
     private fun getRetrofit(): Retrofit = Retrofit.Builder()
         .baseUrl(BASE_URL)

@@ -14,7 +14,8 @@
         android:theme="@style/Theme.Geek_TTN">
         <activity
             android:name=".ui.PlayerActivity"
-            android:exported="true">
+            android:exported="true"
+            android:label="">
 
         </activity>
         <activity

@@ -3,8 +3,8 @@
     xmlns:cardView="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="@dimen/_5sdp"
     android:layout_margin="@dimen/_4sdp"
+    android:layout_marginBottom="@dimen/_5sdp"
     cardView:cardCornerRadius="4dp"
     cardView:cardElevation="4dp">
 
@@ -12,17 +12,38 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:padding="@dimen/_8sdp">
+        android:padding="@dimen/_10sdp">
 
         <TextView
             android:id="@+id/tv_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_bold"
+            android:gravity="start"
             android:text="Expert "
             android:textColor="@color/black"
-            android:textSize="@dimen/_12ssp"
-            android:textStyle="bold" />
+            android:textSize="@dimen/_17ssp" />
 
+        <TextView
+            android:id="@+id/tv_desc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_2sdp"
+            android:ellipsize="end"
+            android:fontFamily="@font/roboto_regular"
+            android:gravity="start"
+            android:maxLines="2"
+            android:text="Expert fskfsdkfkjsdfksdbfshdfsfs sfsdfs fsfs fsfsf sf sf sf sf fsfsfds dfd   fsdfsffsd fsd fs fsf sfsd sd fsf sfs fs sd fs fs fs fs fs fs fsf s "
+            android:textColor="@color/black"
+            android:textSize="@dimen/_12ssp" />
 
+        <RatingBar
+            android:id="@+id/rating"
+            style="@style/Widget.AppCompat.RatingBar.Small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginTop="@dimen/_2sdp"
+            android:rating="4" />
     </LinearLayout>
 </androidx.cardview.widget.CardView>

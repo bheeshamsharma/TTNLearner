@@ -12,7 +12,11 @@
         android:label="@string/title_learning"
         tools:layout="@layout/fragment_courses">
         <action
-            android:id="@+id/action_navigation_courses_to_newCourseFragment"
+            android:id="@+id/action_navigation_course_to_topicFragment"
+            app:destination="@id/navigation_topics" />
+
+        <action
+            android:id="@+id/action_navigation_learning_to_newCourseFragment"
             app:destination="@id/newCourseFragment" />
     </fragment>
 
@@ -22,8 +26,8 @@
         android:label="@string/title_courses"
         tools:layout="@layout/fragment_learning">
         <action
-            android:id="@+id/action_navigation_learning_to_newCourseFragment"
-            app:destination="@id/newCourseFragment" />
+            android:id="@+id/action_navigation_learning_to_courseFragment"
+            app:destination="@id/navigation_courses" />
     </fragment>
 
     <fragment
@@ -34,6 +38,25 @@
 
     </fragment>
 
+    <fragment
+        android:id="@+id/navigation_topics"
+        android:name="com.psgpw.geek_ttn.fragments.TopicListFragment"
+        android:label="Topics"
+        tools:layout="@layout/fragment_topic_list">
+
+        <action
+            android:id="@+id/action_navigation_topic_to_subTopicFragment"
+            app:destination="@id/navigation_subtopic" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_subtopic"
+        android:name="com.psgpw.geek_ttn.fragments.SubTopicFragment"
+        android:label="@string/title_subtopic"
+        tools:layout="@layout/fragment_sub_topic">
+
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_chat"
@@ -45,6 +68,7 @@
     <fragment
         android:id="@+id/newCourseFragment"
         android:name="com.example.greekcompactapp.fragment.NewCourseFragment"
-        android:label="NewCourseFragment" />
+        android:label="NewCourseFragment"
+        tools:layout="@layout/fragment_new_course"/>
 
 </navigation>

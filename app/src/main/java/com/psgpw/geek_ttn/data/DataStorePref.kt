@@ -18,6 +18,7 @@ val Context.dataStore: DataStore<Preferences> by preferencesDataStore(
 class DataStoreManager(val context: Context) {
 
     private val USER_API_KEY = stringPreferencesKey("user_api_key")
+    private val USER_ACCESS_TOKEN = stringPreferencesKey("access_token")
 
     private val USER_LOGIN_STATUS = booleanPreferencesKey("login_status")
 
@@ -29,31 +30,42 @@ class DataStoreManager(val context: Context) {
 
     suspend fun saveUserToPreferencesStore(user: User) {
         context.dataStore.edit { preferences ->
-//            preferences[USER_API_KEY] = user.apikey ?: ""
+            preferences[USER_ACCESS_TOKEN] = user.access_token ?: ""
 //            preferences[USER_NAME] = user.name
-//            preferences[USER_ID] = user.id
-              preferences[USER_EMAIL] = user.email
+            preferences[USER_ID] = user.id
+            preferences[USER_EMAIL] = user.email
 //            preferences[USER_PHONE] = user.phone ?: ""
 //            preferences[USER_IMAGE] = user.image
             preferences[USER_LOGIN_STATUS] = true
         }
     }
-//
-   fun getUserFromPreferencesStore(): Flow<User> = context.dataStore.data
-       .map { preferences ->
+
+    //
+    fun getUserFromPreferencesStore(): Flow<User> = context.dataStore.data
+        .map { preferences ->
             User(
-//                id = preferences[USER_ID] ?: "",
-//                apikey = preferences[USER_API_KEY] ?: "",
+                id = preferences[USER_ID] ?: "",
+                access_token = preferences[USER_ACCESS_TOKEN] ?: "",
 //                name = preferences[USER_NAME] ?: "",
-                  email = preferences[USER_EMAIL] ?: "",
+                email = preferences[USER_EMAIL] ?: "",
 //                image = preferences[USER_IMAGE] ?: "",
 //                phone = preferences[USER_PHONE] ?: "",
             )
-      }
+        }
 
     fun getUserApiKey(): Flow<String> =
         context.dataStore.data.map { preferences ->
             preferences[USER_API_KEY] ?: ""
+        }
+
+    fun getAccessToken(): Flow<String> =
+        context.dataStore.data.map { preferences ->
+            preferences[USER_ACCESS_TOKEN] ?: ""
+        }
+
+    fun getUserId(): Flow<String> =
+        context.dataStore.data.map { preferences ->
+            preferences[USER_ID] ?: ""
         }
 
     fun getUserImage(): Flow<String> =

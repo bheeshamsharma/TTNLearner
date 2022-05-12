@@ -13,6 +13,9 @@ class PlayerActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityPlayerBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        binding.toolbarTitle.setText("Video ");
+        setSupportActionBar(binding.toolbarGchannel);
+        getSupportActionBar()?.setDisplayShowTitleEnabled(false);
         binding.videoPlayer.setOnPreparedListener {
             it.setOnVideoSizeChangedListener { mp, width, height ->
                 val mediaController = MediaController(this)

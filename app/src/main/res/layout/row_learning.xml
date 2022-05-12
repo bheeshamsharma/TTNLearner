@@ -13,20 +13,21 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal"
-        android:padding="@dimen/_1sdp">
+        android:padding="@dimen/_5sdp">
 
         <ImageView
             android:id="@+id/imageView2"
-            android:layout_width="@dimen/_51sdp"
-            android:layout_height="51dp"
+            android:layout_width="@dimen/_60sdp"
+            android:layout_height="@dimen/_60sdp"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="4dp"
            android:src="@drawable/logo" />
 
         <LinearLayout
-            android:layout_width="@dimen/_150sdp"
+            android:layout_width="@dimen/_160sdp"
             android:layout_height="match_parent"
             android:orientation="vertical"
+            android:gravity="center"
             android:padding="@dimen/_1sdp">
 
             <TextView
@@ -34,9 +35,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Expert "
-                android:fontFamily="@font/roboto_regular"
+                android:fontFamily="@font/roboto_bold"
                 android:textColor="@color/black"
-                android:textSize="@dimen/_12sdp" />
+                android:textSize="@dimen/_13sdp" />
 
 
             <TextView
@@ -46,7 +47,7 @@
                 android:text="by TTN"
                 android:fontFamily="@font/roboto_regular"
                 android:textColor="@color/black"
-                android:textSize="@dimen/_10ssp" />
+                android:textSize="@dimen/_11ssp" />
             <ProgressBar
                 android:id="@+id/progressBar"
                 style="?android:attr/progressBarStyleHorizontal"
@@ -64,6 +65,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             android:layout_marginTop="4dp"
+            android:layout_gravity="center"
             android:src="@drawable/ic_baseline_star_rate_24" />
 
         <TextView
@@ -73,6 +75,7 @@
             android:layout_marginStart="8dp"
             android:fontFamily="@font/roboto_regular"
             android:textColor="@color/black"
+            android:layout_gravity="center"
             android:layout_marginTop="4dp"
             android:text="4.4/5.0"
              />

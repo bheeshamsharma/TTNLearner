@@ -14,11 +14,35 @@ class TopicDetailActivity : AppCompatActivity() {
         binding = ActivityTopicDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        binding.toolbarTitle.setText("Topic Detail");
+        setSupportActionBar(binding.toolbarGchannel);
+        getSupportActionBar()?.setDisplayShowTitleEnabled(false);
+        //supportActionBar!!.title = s
+
+
         binding.btnWatchVideo.setOnClickListener {
             startActivity(
                 Intent(
                     this@TopicDetailActivity,
                     PlayerActivity::class.java
+                )
+            )
+        }
+
+        binding.btnSubmitAssignment.setOnClickListener {
+            startActivity(
+                Intent(
+                    this@TopicDetailActivity,
+                    MainActivity::class.java
+                )
+            )
+        }
+
+        binding.btnChatExpert.setOnClickListener {
+            startActivity(
+                Intent(
+                    this@TopicDetailActivity,
+                    MainActivity::class.java
                 )
             )
         }

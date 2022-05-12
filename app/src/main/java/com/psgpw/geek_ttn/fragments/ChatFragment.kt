@@ -32,10 +32,10 @@ class ChatFragment : Fragment(),ChatAdapter.ClickListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        adapterData.add(ChatUser("Expert: 1","Learner 1 : Hi Sir, I have done my assignments"))
-        adapterData.add(ChatUser("Expert: 2","Learner 2 : Thank you ."))
-        adapterData.add(ChatUser("Expert: 3","Learner 3 : Can you help me"))
-        adapterData.add(ChatUser("Expert: 4","Learner 4 :  Its OK!"))
+        adapterData.add(ChatUser("Sandeep Kumar","Bheesham : Hi Sir, I have done my assignments"))
+        adapterData.add(ChatUser("Deepak Nayak","Bheesham : Thank you ."))
+        adapterData.add(ChatUser("Neelesh Kumar","Bheesham : Can you help me"))
+        adapterData.add(ChatUser("Mohammad Talha ","Bheesham :  Its OK!"))
         adapter = ChatAdapter(requireContext()!!, this, adapterData)
         recyclerViewChat.adapter = adapter
         recyclerViewChat.layoutManager = LinearLayoutManager(context)

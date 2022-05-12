@@ -13,7 +13,7 @@ import com.psgpw.geek_ttn.data.dummymodel.Learning
 import com.psgpw.geek_ttn.databinding.FragmentLearningBinding
 import com.psgpw.geek_ttn.ui.MainActivity
 
-class LearningFragment : Fragment(),LearningAdapter.ClickListener {
+class LearningFragment : Fragment(), LearningAdapter.ClickListener {
     lateinit var binding: FragmentLearningBinding
     private lateinit var adapter: LearningAdapter
 
@@ -30,20 +30,20 @@ class LearningFragment : Fragment(),LearningAdapter.ClickListener {
     }
 
     private fun initview(binding: FragmentLearningBinding) {
-         var adapterData: ArrayList<Learning> = ArrayList()
+        var adapterData: ArrayList<Learning> = ArrayList()
 
-        adapterData.add(Learning("Enroll First Course","4/5",40))
-        adapterData.add(Learning("Enroll Second Course","3/5",90))
-        adapterData.add(Learning("Enroll Third Course","2/5",60))
-        adapterData.add(Learning("Enroll Fouth Course","4/5",20))
-        adapterData.add(Learning("Enroll Fifty Course","4/5",70))
-        adapterData.add(Learning("Enroll First Course","4/5",10))
-        adapterData.add(Learning("Enroll Last Course","4/5",80))
+        adapterData.add(Learning("Android (With Kotlin) ", "4/5", 40))
+        adapterData.add(Learning("Java (For Web Development)", "3/5", 90))
+        adapterData.add(Learning("IOS (With Swift)", "2/5", 60))
+        adapterData.add(Learning("Data Science", "4/5", 20))
+        /*  adapterData.add(Learning("Enroll Fifty Course","4/5",70))
+          adapterData.add(Learning("Enroll First Course","4/5",10))
+          adapterData.add(Learning("Enroll Last Course","4/5",80))*/
         adapter = LearningAdapter(requireContext(), this, adapterData)
         binding.recyclerView.adapter = adapter
         binding.recyclerView.layoutManager = LinearLayoutManager(context)
         binding.enroll.setOnClickListener {
-            findNavController().navigate(R.id.action_navigation_learning_to_newCourseFragment)
+            findNavController().navigate(R.id.action_navigation_learning_to_courseFragment)
         }
 
     }

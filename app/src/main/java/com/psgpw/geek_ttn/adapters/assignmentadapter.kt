@@ -33,7 +33,7 @@ class assignmentadapter(
 
     override fun onBindViewHolder(holder: assignmentadapter.ViewHolder, position: Int) {
         val item = list[position]
-        holder.cousrename.text = item.name
+        holder.cousrename.text = item.course_name
 
         holder.itemView.setOnClickListener {
             listener.onItemClick(item)
