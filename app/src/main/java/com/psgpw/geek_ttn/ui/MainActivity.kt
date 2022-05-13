@@ -4,6 +4,7 @@ import android.content.DialogInterface
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,6 +17,7 @@ import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
+import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -112,6 +114,18 @@ class MainActivity : AppCompatActivity() {
         mGoogleSignInClient.signOut().addOnCompleteListener(this, OnCompleteListener {
 
         })
+    }
+
+    override fun onNewIntent(intent: Intent?) {
+        super.onNewIntent(intent)
+        Log.d("Main Activity", "onNew Intent")
+        val bundle = intent?.getBundleExtra("open")
+        val type = bundle?.getString("type")
+        if(type.equals("chat")){
+            navController.navigate(R.id.navigation_chat)
+        }else if(type.equals("assignment")){
+            navController.navigate(R.id.navigation_courses)
+        }
     }
 
 

@@ -4,6 +4,8 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.RatingBar
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.psgpw.geek_ttn.R
@@ -23,6 +25,8 @@ class SubTopicAdapter(
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         var tvname: TextView = view.findViewById(R.id.tv_name)
         var tvDesc: TextView = view.findViewById(R.id.tv_desc)
+        var btnSubmit: Button = view.findViewById(R.id.enroll_now)
+        var ratingBar: RatingBar = view.findViewById(R.id.rating)
 
         init {
 
@@ -40,6 +44,8 @@ class SubTopicAdapter(
         val item = list[position]
         holder.tvname.text = item.stopic_name
         holder.tvDesc.text = item.description
+        holder.btnSubmit.visibility = View.GONE
+        holder.ratingBar.visibility = View.GONE
 
         holder.itemView.setOnClickListener {
             listener.onItemClick(item)

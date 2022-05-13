@@ -1,5 +1,6 @@
 package com.psgpw.geek_ttn.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -21,6 +22,7 @@ import com.psgpw.geek_ttn.data.dummymodel.Topic
 import com.psgpw.geek_ttn.databinding.FragmentSubTopicBinding
 import com.psgpw.geek_ttn.databinding.FragmentTopicListBinding
 import com.psgpw.geek_ttn.ui.MainActivity
+import com.psgpw.geek_ttn.ui.TopicDetailActivity
 import com.psgpw.geek_ttn.viewmodels.CourseViewModel
 
 
@@ -43,14 +45,6 @@ class SubTopicFragment : Fragment(), SubTopicAdapter.ClickListener {
     }
 
     private fun initview() {
-        /*  adapterData.add(Course("Kotlin"))
-          adapterData.add(Course("Data Store (Shared Preference)"))
-          adapterData.add(Course("Collection"))
-          adapterData.add(Course("Design Patterns"))
-          adapterData.add(Course("Networking"))
-          adapterData.add(Course("Security"))*/
-        /*  adapterData.add(Course("Python"))
-          adapterData.add(Course("Node"))*/
         adapter = SubTopicAdapter(requireContext()!!, this, adapterData)
         recyclerViewChat.adapter = adapter
         recyclerViewChat.layoutManager = LinearLayoutManager(context)
@@ -71,7 +65,10 @@ class SubTopicFragment : Fragment(), SubTopicAdapter.ClickListener {
     }
 
     override fun onItemClick(data: SubTopic?) {
-        //  val bundle = bundleOf("topic_id" to data?.id)
+        val bundle = bundleOf("subTopic" to data)
+        val intent =  Intent(requireActivity(), TopicDetailActivity::class.java)
+        intent.putExtra("detail",bundle)
+        startActivity(intent)
         // findNavController().navigate(R.id.action_navigation_topic_to_subTopicFragment,bundle)
     }
 
