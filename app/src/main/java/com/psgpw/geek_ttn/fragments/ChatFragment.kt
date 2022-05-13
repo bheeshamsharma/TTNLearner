@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.psgpw.geek_ttn.R
@@ -13,7 +15,7 @@ import com.psgpw.geek_ttn.databinding.FragmentChatBinding
 import com.psgpw.geek_ttn.ui.MainActivity
 import com.psgpw.pickapp.data.models.ChatUser
 
-class ChatFragment : Fragment(),ChatAdapter.ClickListener {
+class ChatFragment : Fragment(), ChatAdapter.ClickListener {
     lateinit var binding: FragmentChatBinding
 
     private lateinit var adapter: ChatAdapter
@@ -32,10 +34,11 @@ class ChatFragment : Fragment(),ChatAdapter.ClickListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        adapterData.add(ChatUser("Sandeep Kumar","Bheesham : Hi Sir, I have done my assignments"))
-        adapterData.add(ChatUser("Deepak Nayak","Bheesham : Thank you ."))
-        adapterData.add(ChatUser("Neelesh Kumar","Bheesham : Can you help me"))
-        adapterData.add(ChatUser("Mohammad Talha ","Bheesham :  Its OK!"))
+        adapterData.clear()
+        adapterData.add(ChatUser("Sandeep Kumar", "Bheesham : Hi Sir, I have done my assignments"))
+        adapterData.add(ChatUser("Deepak Nayak", "Bheesham : Thank you ."))
+        adapterData.add(ChatUser("Neelesh Kumar", "Bheesham : Can you help me"))
+        adapterData.add(ChatUser("Mohammad Talha ", "Bheesham :  Its OK!"))
         adapter = ChatAdapter(requireContext()!!, this, adapterData)
         recyclerViewChat.adapter = adapter
         recyclerViewChat.layoutManager = LinearLayoutManager(context)
@@ -44,6 +47,7 @@ class ChatFragment : Fragment(),ChatAdapter.ClickListener {
     }
 
     override fun onItemClick(data: ChatUser?) {
-
+        val bundle = bundleOf("name" to data?.name)
+        findNavController().navigate(R.id.action_navigation_chat_to_chat_detail, bundle)
     }
 }

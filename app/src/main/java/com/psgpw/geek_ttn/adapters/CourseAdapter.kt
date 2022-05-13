@@ -4,6 +4,7 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.RatingBar
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
@@ -18,12 +19,14 @@ class CourseAdapter(
     RecyclerView.Adapter<CourseAdapter.ViewHolder>() {
     interface ClickListener {
         fun onItemClick(data: Course?)
+        fun onEnrollNowClick(position: Int,data: Course?)
     }
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         var tvname: TextView = view.findViewById(R.id.tv_name)
         var tvDesc: TextView = view.findViewById(R.id.tv_desc)
         var ratingBar: RatingBar = view.findViewById(R.id.rating)
+        var enrollNow: Button = view.findViewById(R.id.enroll_now)
 
         init {
 
@@ -43,6 +46,13 @@ class CourseAdapter(
         holder.tvDesc.text = item.description
         holder.ratingBar.rating = item.rating.toFloat()
 
+        if(item.enroll){
+            holder.enrollNow.text = "Enrolled"
+            holder.enrollNow.isEnabled = false
+        }
+        holder.enrollNow.setOnClickListener {
+            listener.onEnrollNowClick(position,item)
+        }
         holder.itemView.setOnClickListener {
             listener.onItemClick(item)
         }

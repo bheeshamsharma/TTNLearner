@@ -9,7 +9,7 @@
     <fragment
         android:id="@+id/navigation_courses"
         android:name="com.psgpw.geek_ttn.fragments.CoursesFragment"
-        android:label="@string/title_learning"
+        android:label="@string/title_courses"
         tools:layout="@layout/fragment_courses">
         <action
             android:id="@+id/action_navigation_course_to_topicFragment"
@@ -23,8 +23,12 @@
     <fragment
         android:id="@+id/navigation_learning"
         android:name="com.psgpw.geek_ttn.fragments.LearningFragment"
-        android:label="@string/title_courses"
+        android:label="@string/title_learning"
         tools:layout="@layout/fragment_learning">
+        <action
+            android:id="@+id/action_navigation_course_to_topicFragment"
+            app:destination="@id/navigation_topics" />
+
         <action
             android:id="@+id/action_navigation_learning_to_courseFragment"
             app:destination="@id/navigation_courses" />
@@ -48,6 +52,10 @@
             android:id="@+id/action_navigation_topic_to_subTopicFragment"
             app:destination="@id/navigation_subtopic" />
 
+        <action
+            android:id="@+id/action_navigation_topic_to_assignment"
+            app:destination="@id/viewAssignment" />
+
     </fragment>
 
     <fragment
@@ -64,11 +72,29 @@
         android:label="@string/title_chat"
         tools:layout="@layout/fragment_chat">
 
+        <action
+            android:id="@+id/action_navigation_chat_to_chat_detail"
+            app:destination="@id/chatDetail" />
+
+
     </fragment>
+
+    <fragment
+        android:id="@+id/chatDetail"
+        android:name="com.psgpw.geek_ttn.fragments.ChatDetailFragment"
+        android:label="ChatDetail"
+        tools:layout="@layout/fragment_chat_detail" />
+
     <fragment
         android:id="@+id/newCourseFragment"
-        android:name="com.example.greekcompactapp.fragment.NewCourseFragment"
+        android:name="com.psgpw.geek_ttn.fragments.NewCourseFragment"
         android:label="NewCourseFragment"
-        tools:layout="@layout/fragment_new_course"/>
+        tools:layout="@layout/fragment_new_course" />
+
+    <fragment
+        android:id="@+id/viewAssignment"
+        android:name="com.example.greekcompactapp.fragment.PendingAssignmentFragment"
+        android:label="viewAssignment"
+        tools:layout="@layout/fragment_pending_assignment" />
 
 </navigation>

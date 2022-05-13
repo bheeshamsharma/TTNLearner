@@ -58,27 +58,15 @@
                 android:indeterminateTintMode="src_atop"
                 tools:layout_editor_absoluteY="304dp" />
         </LinearLayout>
-
-        <ImageView
-            android:id="@+id/imageView3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="4dp"
-            android:layout_gravity="center"
-            android:src="@drawable/ic_baseline_star_rate_24" />
-
-        <TextView
+        <RatingBar
             android:id="@+id/rating"
+            style="@style/Widget.AppCompat.RatingBar.Small"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:fontFamily="@font/roboto_regular"
-            android:textColor="@color/black"
-            android:layout_gravity="center"
-            android:layout_marginTop="4dp"
-            android:text="4.4/5.0"
-             />
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="@dimen/_2sdp"
+            android:rating="4" />
+
 
     </LinearLayout>
 </androidx.cardview.widget.CardView>

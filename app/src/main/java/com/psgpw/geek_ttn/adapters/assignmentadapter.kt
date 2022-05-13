@@ -2,22 +2,27 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.psgpw.geek_ttn.R
+import com.psgpw.geek_ttn.data.dummymodel.Assignment
 import com.psgpw.geek_ttn.data.dummymodel.Course
 
 class assignmentadapter(
     val context: Context,
     var listener: ClickListener,
-    var list: List<Course>
+    var list: List<Assignment>
 ) :
     RecyclerView.Adapter<assignmentadapter.ViewHolder>() {
     interface ClickListener {
-        fun onItemClick(data: Course?)
+        fun onItemClick(data: Assignment?)
     }
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        var cousrename: TextView = view.findViewById(R.id.cousrename)
+        var assignmentName: TextView = view.findViewById(R.id.tv_name)
+        var assignmentDesc: TextView = view.findViewById(R.id.tv_desc)
+        var assignmentLink: TextView = view.findViewById(R.id.tv_link)
+        var submit: Button = view.findViewById(R.id.enroll_now)
 
         init {
 
@@ -33,11 +38,25 @@ class assignmentadapter(
 
     override fun onBindViewHolder(holder: assignmentadapter.ViewHolder, position: Int) {
         val item = list[position]
-        holder.cousrename.text = item.course_name
+        holder.assignmentName.text = item.assignment_name
+        holder.assignmentDesc.text = item.description
+        holder.assignmentLink.text = item.assign_link
 
-        holder.itemView.setOnClickListener {
+        if(item.assignment_state.equals("submitted")){
+            holder.submit.isEnabled = false
+            holder.submit.text = "Already Submitted"
+        }
+
+        if(item.assignment_state.equals("done")){
+            holder.submit.isEnabled = false
+            holder.submit.text = "DONE"
+        }
+
+
+        holder.submit.setOnClickListener {
             listener.onItemClick(item)
-        }    }
+        }
+    }
 
     override fun getItemCount(): Int {
         return list.size

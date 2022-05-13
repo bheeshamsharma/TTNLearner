@@ -4,9 +4,7 @@ import android.app.Application
 import android.net.Uri
 import com.psgpw.HireMe.data.ResponseData
 import com.psgpw.HireMe.data.ResultState
-import com.psgpw.geek_ttn.data.dummymodel.Course
-import com.psgpw.geek_ttn.data.dummymodel.SubTopic
-import com.psgpw.geek_ttn.data.dummymodel.Topic
+import com.psgpw.geek_ttn.data.dummymodel.*
 import com.psgpw.geek_ttn.data.models.request.LoginRequest
 import com.psgpw.pickapp.data.models.BaseRequest
 import com.psgpw.pickapp.data.models.User
@@ -58,6 +56,41 @@ class NetworkRepo {
             emit(ResultState.Error(ex))
         }
     }.flowOn(Dispatchers.IO)
+
+    suspend fun getEnrolledCourse(userId: String
+    ): Flow<ResultState<List<Course>?>> = flow {
+        try {
+            emit(ResultState.Loading)
+            val responseData = ApiHelper.getEnrolledCourses(userId)
+            if (responseData.isSuccessful) {
+                responseData.body().let {
+                    emit(ResultState.Success(it))
+                }
+            } else {
+                emit(ResultState.Error(Exception(responseData.errorBody().toString())))
+            }
+        } catch (ex: Exception) {
+            emit(ResultState.Error(ex))
+        }
+    }.flowOn(Dispatchers.IO)
+
+    suspend fun getAssignmentList(userId: String
+    ): Flow<ResultState<List<Assignment>?>> = flow {
+        try {
+            emit(ResultState.Loading)
+            val responseData = ApiHelper.getAssignmentList(userId)
+            if (responseData.isSuccessful) {
+                responseData.body().let {
+                    emit(ResultState.Success(it))
+                }
+            } else {
+                emit(ResultState.Error(Exception(responseData.errorBody().toString())))
+            }
+        } catch (ex: Exception) {
+            emit(ResultState.Error(ex))
+        }
+    }.flowOn(Dispatchers.IO)
+
 
     suspend fun getCourses(
     ): Flow<ResultState<List<Course>?>> = flow {
@@ -131,40 +164,58 @@ class NetworkRepo {
     }.flowOn(Dispatchers.IO)
 
 
-//    suspend fun editUser(
-//        baseRequest: BaseRequest
-//    ): Flow<ResultState<ResponseData<Nothing>>> = flow {
-//        try {
-//            emit(ResultState.Loading)
-//            val responseData = ApiHelper.editUser(baseRequest)
-//            if (responseData.status) {
-//                emit(ResultState.Success(responseData))
-//            } else {
-//                emit(ResultState.Error(Exception(responseData.message)))
-//            }
-//        } catch (ex: Exception) {
-//            emit(ResultState.Error(ex))
-//        }
-//    }.flowOn(Dispatchers.IO)
+    suspend fun newCourseRequest(
+        courseRequest: CourseRequest
+    ): Flow<ResultState<Course?>> = flow {
+        try {
+            emit(ResultState.Loading)
+            val responseData = ApiHelper.newCourseRequest(courseRequest)
+            if (responseData.isSuccessful) {
+                responseData.body().let {
+                    emit(ResultState.Success(it))
+                }
+            } else {
+                emit(ResultState.Error(Exception(responseData.errorBody().toString())))
+            }
+        } catch (ex: Exception) {
+            emit(ResultState.Error(ex))
+        }
+    }.flowOn(Dispatchers.IO)
 
-//    suspend fun editUserImage(
-//        apiKey: String, file: ByteArray
-//    ): Flow<ResultState<ResponseData<User>>> = flow {
-//        //try {
-//            emit(ResultState.Loading)
-//            val responseData = ApiHelper.editUserImage(id = apiKey, uri = file)
-//            if (responseData.status) {
-//                emit(ResultState.Success(responseData))
-//            } else {
-//                emit(ResultState.Error(Exception(responseData.message)))
-//            }
-//      //  } catch (ex: Exception) {
-//        //    emit(ResultState.Error(ex))
-//        //}
-//    }.flowOn(Dispatchers.IO)
-//        .catch { e ->
-//            emit(ResultState.Error(Exception(e.message)))
-//        }
+    suspend fun submitAssignment(
+        assignment: Assignment
+    ): Flow<ResultState<Assignment?>> = flow {
+        try {
+            emit(ResultState.Loading)
+            val responseData = ApiHelper.submitAssignment(assignment)
+            if (responseData.isSuccessful) {
+                responseData.body().let {
+                    emit(ResultState.Success(it))
+                }
+            } else {
+                emit(ResultState.Error(Exception(responseData.errorBody().toString())))
+            }
+        } catch (ex: Exception) {
+            emit(ResultState.Error(ex))
+        }
+    }.flowOn(Dispatchers.IO)
 
+    suspend fun enrollCourseRequest(
+        userId: String,CourseId: String
+    ): Flow<ResultState<Course?>> = flow {
+        try {
+            emit(ResultState.Loading)
+            val responseData = ApiHelper.enrollCourseRequest(userId,CourseId)
+            if (responseData.isSuccessful) {
+                responseData.body().let {
+                    emit(ResultState.Success(it))
+                }
+            } else {
+                emit(ResultState.Error(Exception(responseData.errorBody().toString())))
+            }
+        } catch (ex: Exception) {
+            emit(ResultState.Error(ex))
+        }
+    }.flowOn(Dispatchers.IO)
 
 }

@@ -2,9 +2,7 @@ package com.psgpw.pickapp.data.network
 
 import com.psgpw.HireMe.data.ResponseData
 import com.psgpw.HireMe.data.models.UserDetail
-import com.psgpw.geek_ttn.data.dummymodel.Course
-import com.psgpw.geek_ttn.data.dummymodel.SubTopic
-import com.psgpw.geek_ttn.data.dummymodel.Topic
+import com.psgpw.geek_ttn.data.dummymodel.*
 import com.psgpw.geek_ttn.data.models.request.LoginRequest
 import com.psgpw.pickapp.data.models.User
 import okhttp3.MultipartBody
@@ -27,6 +25,12 @@ interface ApiService {
     @GET("courses")
     suspend fun getCourses(): Response<List<Course>>
 
+    @GET("enrollcourse")
+    suspend fun getEnrolledCourses(@Query("q") id: String): Response<List<Course>>
+
+    @GET("submitassignment")
+    suspend fun getAssignmentList(@Query("l") id: String): Response<List<Assignment>>
+
     @GET("coursestopic")
     suspend fun getTopics(@Query("q") id: String): Response<List<Topic>>
 
@@ -36,29 +40,13 @@ interface ApiService {
     @GET("subTopicDetail/")
     suspend fun getSubTopicDetail(@Query("q") id: String): Response<SubTopic>
 
-    @POST("ForgetpasswordApi")
-    suspend fun forgetPassword(@Query("email") email: String): ResponseData<Nothing>
+    @POST("enrollcourse")
+    suspend fun enrollCourse(@Body hashMap: HashMap<String, String>): Response<Course>
 
-    @POST("UpdatepasswordApi")
-    suspend fun updatePassword(@QueryMap queries: Map<String, String?>): ResponseData<Nothing>
+    @POST("raisequeries")
+    suspend fun newCourseRequest(@Body courseRequest: CourseRequest): Response<Course>
 
-    @Multipart
-    @POST("UpdateProfileImage")
-    suspend fun editUserImage(
-        @Part("id") key: RequestBody,
-        @Part file: MultipartBody.Part?
-    ): ResponseData<Nothing>
+    @POST("submitassignment")
+    suspend fun submitAssignment(@Body assignment: Assignment): Response<Assignment>
 
-    @Multipart
-    @POST("UpdateProfileVideo")
-    suspend fun updateProfileVideo(
-        @Part("id") id: RequestBody,
-        @Part file: MultipartBody.Part?
-    ): ResponseData<Nothing>
-
-    @POST("UserEditprofileApi")
-    suspend fun userEditProfile(@QueryMap queries: Map<String, String?>): ResponseData<User>
-
-    @POST("UserDetailApi")
-    suspend fun userDetail(@Query("id") id: String): ResponseData<UserDetail>
 }

@@ -31,12 +31,17 @@ import com.psgpw.geek_ttn.viewmodels.LoginViewModel
 import com.psgpw.pickapp.data.DataStoreManager
 import com.psgpw.pickapp.data.models.ChatUser
 import com.psgpw.pickapp.data.models.User
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
+import retrofit2.http.POST
 
-class CoursesFragment : Fragment(),CourseAdapter.ClickListener  {
+class CoursesFragment : Fragment(), CourseAdapter.ClickListener {
     lateinit var binding: FragmentCoursesBinding
     val viewModel: CourseViewModel by viewModels<CourseViewModel>()
 
+    lateinit var selectedCourse: Course
+    private var postition: Int = 0
+    lateinit var userId: String
     private lateinit var adapter: CourseAdapter
     private var adapterData: ArrayList<Course> = ArrayList()
     private lateinit var recyclerViewChat: RecyclerView
@@ -49,17 +54,22 @@ class CoursesFragment : Fragment(),CourseAdapter.ClickListener  {
         recyclerViewChat = binding.recyclerView
 
         initview(binding)
+        lifecycleScope.launch {
+            DataStoreManager(requireContext()).getUserId().collect { id ->
+                userId = id
+            }
+        }
         return binding.root
     }
 
     private fun initview(binding: FragmentCoursesBinding) {
 
-       /* adapterData.add(Course("Android(With Kotlin)"))
-        adapterData.add(Course("IOS(With Swift)"))
-        adapterData.add(Course("React Native"))
-        adapterData.add(Course("Java(Web Development)"))*/
-      /*  adapterData.add(Course("Python"))
-        adapterData.add(Course("Node"))*/
+        /* adapterData.add(Course("Android(With Kotlin)"))
+         adapterData.add(Course("IOS(With Swift)"))
+         adapterData.add(Course("React Native"))
+         adapterData.add(Course("Java(Web Development)"))*/
+        /*  adapterData.add(Course("Python"))
+          adapterData.add(Course("Node"))*/
         adapter = CourseAdapter(requireContext()!!, this, adapterData)
         recyclerViewChat.adapter = adapter
         recyclerViewChat.layoutManager = LinearLayoutManager(context)
@@ -82,8 +92,39 @@ class CoursesFragment : Fragment(),CourseAdapter.ClickListener  {
     }
 
     override fun onItemClick(data: Course?) {
-        val bundle = bundleOf("course_id" to data?.id, "course_name" to data?.course_name)
-        findNavController().navigate(R.id.action_navigation_course_to_topicFragment,bundle)
+        val bundle = bundleOf("course_id" to data?.id, "course_name" to data?.course_name, "isEnrolled" to data?.enroll)
+        findNavController().navigate(R.id.action_navigation_course_to_topicFragment, bundle)
+    }
+
+    override fun onEnrollNowClick(postition: Int, data: Course?) {
+        this.postition = postition
+        selectedCourse = data!!
+        callEnrollNowAPI()
+    }
+
+    private fun callEnrollNowAPI() {
+        viewModel.enrollCourseRequest(userId, selectedCourse.id)
+        apiEnrollCourseObserver()
+    }
+
+    private fun apiEnrollCourseObserver() {
+        viewModel.enrollCourse.observe(this, Observer<ResultState<Course?>> {
+            when (it) {
+                is ResultState.Loading -> binding.progress.progressBar.visibility = View.VISIBLE
+                is ResultState.Error -> {
+                    binding.progress.progressBar.visibility = View.GONE
+                    Toast.makeText(requireContext(), it.exception.message, Toast.LENGTH_SHORT)
+                        .show()
+                }
+                is ResultState.Success -> {
+                    binding.progress.progressBar.visibility = View.GONE
+                    if (it.data != null) {
+                        selectedCourse.enroll = true
+                        adapter.notifyItemChanged(postition, selectedCourse)
+                    }
+                }
+            }
+        })
     }
 
     private fun apiCourseListObserver() {

@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Geek_TTN/app/src/main/res/drawable/chat_bg.xml" value="0.12604166666666666" />
         <entry key="..\:/Geek_TTN/app/src/main/res/layout/activity_login.xml" value="0.13541666666666666" />
         <entry key="..\:/Geek_TTN/app/src/main/res/layout/activity_main.xml" value="0.23802083333333332" />
         <entry key="..\:/Geek_TTN/app/src/main/res/layout/activity_player.xml" value="0.13489583333333333" />
@@ -11,8 +12,10 @@
         <entry key="..\:/Geek_TTN/app/src/main/res/layout/course_list.xml" value="0.2" />
         <entry key="..\:/Geek_TTN/app/src/main/res/layout/dialog_choose_role.xml" value="0.19479166666666667" />
         <entry key="..\:/Geek_TTN/app/src/main/res/layout/dialog_logout.xml" value="0.11354166666666667" />
+        <entry key="..\:/Geek_TTN/app/src/main/res/layout/dialog_submit_assignment.xml" value="0.16354166666666667" />
         <entry key="..\:/Geek_TTN/app/src/main/res/layout/fragment_assignments.xml" value="0.11354166666666667" />
         <entry key="..\:/Geek_TTN/app/src/main/res/layout/fragment_chat.xml" value="0.12447916666666667" />
+        <entry key="..\:/Geek_TTN/app/src/main/res/layout/fragment_chat_detail.xml" value="0.1" />
         <entry key="..\:/Geek_TTN/app/src/main/res/layout/fragment_courses.xml" value="0.1" />
         <entry key="..\:/Geek_TTN/app/src/main/res/layout/fragment_dashboard.xml" value="0.23802083333333332" />
         <entry key="..\:/Geek_TTN/app/src/main/res/layout/fragment_learning.xml" value="0.12447916666666667" />
@@ -25,6 +28,7 @@
         <entry key="..\:/Geek_TTN/app/src/main/res/layout/item_chat_list.xml" value="0.1703125" />
         <entry key="..\:/Geek_TTN/app/src/main/res/layout/progress_bar.xml" value="0.14635416666666667" />
         <entry key="..\:/Geek_TTN/app/src/main/res/layout/row_assignment.xml" value="0.11354166666666667" />
+        <entry key="..\:/Geek_TTN/app/src/main/res/layout/row_chat_detail.xml" value="0.15729166666666666" />
         <entry key="..\:/Geek_TTN/app/src/main/res/layout/row_learning.xml" value="0.1" />
         <entry key="..\:/Geek_TTN/app/src/main/res/menu/bottom_nav_menu.xml" value="0.23802083333333332" />
       </map>

@@ -2,6 +2,7 @@ package com.psgpw.geek_ttn.ui
 
 import android.content.DialogInterface
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -70,15 +71,21 @@ class MainActivity : AppCompatActivity() {
         val dialogView: View = LayoutInflater.from(applicationContext)
             .inflate(R.layout.dialog_logout, viewGroup, false)
         builder.setView(dialogView)
-        builder.setTitle("Logout")
-       // builder.setMessage("Are you sure ? You  want to logout?")
+        val textView = TextView(this)
+        textView.text = "Logout"
+        textView.setPadding(20, 30, 20, 30)
+        textView.textSize = 20f
+        textView.setBackgroundColor(resources.getColor(R.color.primary_varient))
+        textView.setTextColor(Color.WHITE)
+        builder.setCustomTitle(textView)
+        // builder.setMessage("Are you sure ? You  want to logout?")
         builder.setPositiveButton("YES", DialogInterface.OnClickListener { dialog, which ->
             logout()
-        } )
+        })
 
         builder.setNegativeButton("NO", DialogInterface.OnClickListener { dialog, which ->
             dialog.dismiss()
-        } )
+        })
 
         val alertDialog: AlertDialog = builder.create()
 

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:cardView="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="@dimen/_4sdp"
@@ -9,32 +8,56 @@
     cardView:cardCornerRadius="4dp"
     cardView:cardElevation="4dp">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="horizontal"
-        android:weightSum="8"
-        android:padding="@dimen/_15sdp">
-
+        android:padding="@dimen/_10sdp">
 
         <TextView
-            android:id="@+id/cousrename"
+            android:id="@+id/tv_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="4"
+            android:fontFamily="@font/roboto_bold"
+            android:gravity="start"
             android:text="Expert "
-            android:fontFamily="@font/roboto_regular"
             android:textColor="@color/black"
-            android:textSize="@dimen/_13sdp" />
+            android:textSize="@dimen/_17ssp" />
 
-        <ImageView
-            android:id="@+id/imageView3"
+        <TextView
+            android:id="@+id/tv_desc"
             android:layout_width="match_parent"
-            android:layout_weight="2"
-            android:layout_height="@dimen/_20sdp"
-            android:layout_gravity="right"
-            android:src="@drawable/edit" />
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_name"
+            android:layout_marginTop="@dimen/_2sdp"
+            android:ellipsize="end"
+            android:fontFamily="@font/roboto_regular"
+            android:gravity="start"
+            android:maxLines="2"
+            android:text="Expert fskfsdkfkjsdfksdbfshdfsfs sfsdfs fsfs fsfsf sf sf sf sf fsfsfds dfd   fsdfsffsd fsd fs fsf sfsd sd fsf sfs fs sd fs fs fs fs fs fs fsf s "
+            android:textColor="@color/black"
+            android:textSize="@dimen/_12ssp" />
 
+        <TextView
+            android:id="@+id/tv_link"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_desc"
+            android:layout_marginTop="@dimen/_3sdp"
+            android:autoLink="web"
+            android:linksClickable="true"
+            android:paddingHorizontal="@dimen/_10sdp"
+            android:text="https://developer.android.com/guide/components/activities/activity-lifecycle" />
 
-    </LinearLayout>
+        <Button
+            android:id="@+id/enroll_now"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_link"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="@dimen/_3sdp"
+            android:fontFamily="@font/roboto_regular"
+            android:text="Submit"
+            android:textSize="@dimen/_8ssp" />
+
+    </RelativeLayout>
 </androidx.cardview.widget.CardView>

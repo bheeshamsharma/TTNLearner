@@ -5,18 +5,32 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.core.os.bundleOf
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.psgpw.HireMe.data.ResultState
 import com.psgpw.geek_ttn.R
 import com.psgpw.geek_ttn.adapters.LearningAdapter
+import com.psgpw.geek_ttn.data.dummymodel.Course
 import com.psgpw.geek_ttn.data.dummymodel.Learning
 import com.psgpw.geek_ttn.databinding.FragmentLearningBinding
 import com.psgpw.geek_ttn.ui.MainActivity
+import com.psgpw.geek_ttn.viewmodels.CourseViewModel
+import com.psgpw.pickapp.data.DataStoreManager
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 
 class LearningFragment : Fragment(), LearningAdapter.ClickListener {
     lateinit var binding: FragmentLearningBinding
     private lateinit var adapter: LearningAdapter
 
+    val viewModel: CourseViewModel by viewModels<CourseViewModel>()
+    private var adapterData: ArrayList<Course> = ArrayList()
+    lateinit var userId : String
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -26,19 +40,15 @@ class LearningFragment : Fragment(), LearningAdapter.ClickListener {
 
         binding = FragmentLearningBinding.inflate(inflater)
         initview(binding)
+        lifecycleScope.launch {
+            DataStoreManager(requireContext()).getUserId().collect { id ->
+                userId = id
+            }
+        }
         return binding.root
     }
 
     private fun initview(binding: FragmentLearningBinding) {
-        var adapterData: ArrayList<Learning> = ArrayList()
-
-        adapterData.add(Learning("Android (With Kotlin) ", "4/5", 40))
-        adapterData.add(Learning("Java (For Web Development)", "3/5", 90))
-        adapterData.add(Learning("IOS (With Swift)", "2/5", 60))
-        adapterData.add(Learning("Data Science", "4/5", 20))
-        /*  adapterData.add(Learning("Enroll Fifty Course","4/5",70))
-          adapterData.add(Learning("Enroll First Course","4/5",10))
-          adapterData.add(Learning("Enroll Last Course","4/5",80))*/
         adapter = LearningAdapter(requireContext(), this, adapterData)
         binding.recyclerView.adapter = adapter
         binding.recyclerView.layoutManager = LinearLayoutManager(context)
@@ -51,11 +61,39 @@ class LearningFragment : Fragment(), LearningAdapter.ClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         ((activity as MainActivity).setuptoolbar("Learning "))
-
+        callCourseListApi()
 
     }
 
-    override fun onItemClick(data: Learning?) {
-//        TODO("Not yet implemented")
+    private fun callCourseListApi() {
+        viewModel.getEnrolledCourseList(userId)
+        apiCourseListObserver()
+    }
+
+    private fun apiCourseListObserver() {
+        viewModel.enrolledCourses.observe(this, Observer<ResultState<List<Course>?>> {
+            when (it) {
+                is ResultState.Loading -> binding.progress.progressBar.visibility = View.VISIBLE
+                is ResultState.Error -> {
+                    binding.progress.progressBar.visibility = View.GONE
+                    Toast.makeText(requireContext(), it.exception.message, Toast.LENGTH_SHORT)
+                        .show()
+                }
+                is ResultState.Success -> {
+                    binding.progress.progressBar.visibility = View.GONE
+                    adapterData.run {
+                        adapterData.clear()
+                        adapterData.addAll(it.data!!)
+                        adapter.notifyDataSetChanged()
+                    }
+
+                }
+            }
+        })
+    }
+
+    override fun onItemClick(data: Course?) {
+        val bundle = bundleOf("course_id" to data?.course_id, "course_name" to data?.course_name, "isEnrolled" to true)
+        findNavController().navigate(R.id.action_navigation_course_to_topicFragment, bundle)
     }
 }
